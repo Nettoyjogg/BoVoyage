@@ -23,7 +23,7 @@
 			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-<!-- Spring-core -->
+		<!-- Spring-core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -37,21 +37,21 @@
 			<version>${spring.version}</version>
 		</dependency>
 		
-		<!-- Spring-web pour pouvoir intergrer les techno de la couche vue avec le conteneur léger de srping IOC -->
+		<!-- Spring-web pour pouvoir integrer les techno de la couche vue avec le conteneur léger de srping IOC -->
 		<dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-web</artifactId>
 	<version>${spring.version}</version>
 		</dependency>
 		
-				<!-- Spring-web pour pouvoir intergrer les techno de la couche vue avec le conteneur léger de srping IOC -->
+				<!-- Spring-web pour pouvoir integrer les techno de la couche vue avec le conteneur léger de srping MVC -->
 		<dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-webmvc</artifactId>
 	<version>${spring.version}</version>
 		</dependency>
   
-  		<!-- Spring-ORM pour pouvoir intergrer les integrer les ORM avec le conteneur leger se Spring IOC -->
+  		<!-- Spring-ORM pour pouvoir integrer les ORM avec le conteneur leger se Spring IOC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>

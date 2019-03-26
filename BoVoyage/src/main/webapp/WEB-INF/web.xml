@@ -2,7 +2,57 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID"
 	version="3.1">
 	<display-name>BoVoyage</display-name>
+	
+	<!-- Déclaration du listener afin que le conteneur web puisse charger le contexte Spring IOC -->
+<listener>
+<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+
+<!-- Spécifier le chemin du fichier de config de Spring IOC -->  <!-- Spécifier le chemin du fichier de config du context spring security -->
+<context-param>
+<param-name>contextConfigLocation</param-name>
+<param-value>/WEB-INF/application-context.xml /WEB-INF/security-context.xml</param-value>
+
+</context-param>
+
+
+<!-- Déclaration de la servlet unique de spring MVC -->
+	<servlet>
+	<servlet-name>servletBoVoyage</servlet-name>
+	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<!-- Spécifier le chemin du fichier de config de spring MVC -->
+	<init-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>/WEB-INF/mvc-context.xml</param-value>
+	
+	</init-param>
+	</servlet>
+	
+	<!-- le mapping de la servlet unique -->
+	<servlet-mapping>
+	<servlet-name>servletBoVoyage</servlet-name>
+	<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!-- la page d'accueil -->
+	<welcome-file-list>
+	<welcome-file>accueil.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<!--  Déclaration du filtre qui va être utilisé pour la sécurité -->
+<filter>
+<filter-name>springSecurityFilterChain</filter-name>
+<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+</filter>
+
+<!-- Le mapping du filtre -->
+<filter-mapping>
+<filter-name>springSecurityFilterChain</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+	
 
 </web-app>
