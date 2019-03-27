@@ -39,7 +39,7 @@
 	
 	<!-- la page d'accueil -->
 	<welcome-file-list>
-	<welcome-file>accueil.jsp</welcome-file>
+	<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
 	<!--  Déclaration du filtre qui va être utilisé pour la sécurité -->
