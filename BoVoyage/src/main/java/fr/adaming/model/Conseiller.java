@@ -29,6 +29,8 @@ public class Conseiller implements Serializable{
 	private String mailConseiller;
 	@Column(name = "mdp_co")
 	private String mdpConseiller;
+	@Column(name = "active_co")
+	private boolean active;
 	
 	//transformation de l'association UML en JAVA
 	@OneToMany(mappedBy="conseiller")
@@ -43,20 +45,33 @@ public class Conseiller implements Serializable{
 	public Conseiller() {
 		super();
 	}
-	public Conseiller(String nomConseiller, String mailConseiller, String mdpConseiller) {
+
+	
+	public Conseiller(String nomConseiller, String mailConseiller, String mdpConseiller, boolean active,
+			List<Client> clients, List<Role> roles) {
 		super();
 		this.nomConseiller = nomConseiller;
 		this.mailConseiller = mailConseiller;
 		this.mdpConseiller = mdpConseiller;
+		this.active = active;
+		this.clients = clients;
+		this.roles = roles;
 	}
-	public Conseiller(int idConseiller, String nomConseiller, String mailConseiller, String mdpConseiller) {
+
+
+	public Conseiller(int idConseiller, String nomConseiller, String mailConseiller, String mdpConseiller,
+			boolean active, List<Client> clients, List<Role> roles) {
 		super();
 		this.idConseiller = idConseiller;
 		this.nomConseiller = nomConseiller;
 		this.mailConseiller = mailConseiller;
 		this.mdpConseiller = mdpConseiller;
+		this.active = active;
+		this.clients = clients;
+		this.roles = roles;
 	}
-	
+
+
 	//getter et setter
 	public int getIdConseiller() {
 		return idConseiller;
@@ -98,11 +113,21 @@ public class Conseiller implements Serializable{
 	
 	
 	
-	//To string
+	public boolean isActive() {
+		return active;
+	}
+
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+//To string
 	@Override
 	public String toString() {
 		return "Conseiller [idConseiller=" + idConseiller + ", nomConseiller=" + nomConseiller + ", mailConseiller="
-				+ mailConseiller + ", mdpConseiller=" + mdpConseiller + "]";
+				+ mailConseiller + ", mdpConseiller=" + mdpConseiller + ", active=" + active + ", clients=" + clients
+				+ ", roles=" + roles + "]";
 	}
 	
 	

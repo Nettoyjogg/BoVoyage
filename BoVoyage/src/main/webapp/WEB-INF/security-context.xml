@@ -28,8 +28,8 @@
 	<security:http>
 		<!-- Spécifier les URL à sécurisé grâce a la balise intercept URL via l'attribut 
 			pattern et donner les authorisations via l'attribut access -->
-		<security:intercept-url pattern="/etudiant/**"
-			access="ROLE_FORM" />
+		<security:intercept-url pattern="/client/**"
+			access="ROLE_CONS" />
 
 
 
@@ -62,8 +62,8 @@
 			<!-- Utilisation de la base de données pour la déclaratio des utilisateurs -->
 			<security:jdbc-user-service
 				data-source-ref="datasourceBean1"
-				users-by-username-query="SELECT mail,mdp,active FROM formateurs WHERE mail=?"
-				authorities-by-username-query="SELECT f.mail,r.roleName FROM formateurs f, roles r WHERE f.mail=? AND f.id_f=r.f_id" />
+				users-by-username-query="SELECT mail_co,mdp_co,active_co FROM conseillers WHERE mail_co=?"
+				authorities-by-username-query="SELECT co.mail_co,r.roleName FROM conseillers co, roles r WHERE co.mail_co=? AND co.id_co=r.co_id" />
 
 
 		</security:authentication-provider>

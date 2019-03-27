@@ -50,6 +50,8 @@ public class Client implements Serializable{
 	private String mailClient;
 	@Column(name = "mdp_c")
 	private String mdpClient;
+	@Column(name = "active_c")
+	private boolean active;
 	
 	
 	
@@ -69,9 +71,12 @@ public class Client implements Serializable{
 		super();
 	}
 	
+
+
 	public Client(String nomClient, String prenomClient, String civilite, String adresse, String telephone,
 			int numeroSequentiel, Date dateNaissance, long numCarteB, boolean solvabilite, boolean solde,
-			String mailClient, String mdpClient) {
+			String mailClient, String mdpClient, boolean active, Conseiller conseiller, List<Role> roles,
+			List<Commande> listeCommande) {
 		super();
 		this.nomClient = nomClient;
 		this.prenomClient = prenomClient;
@@ -85,11 +90,18 @@ public class Client implements Serializable{
 		this.solde = solde;
 		this.mailClient = mailClient;
 		this.mdpClient = mdpClient;
+		this.active = active;
+		this.conseiller = conseiller;
+		this.roles = roles;
+		this.listeCommande = listeCommande;
 	}
-	
+
+
+
 	public Client(int idClient, String nomClient, String prenomClient, String civilite, String adresse,
 			String telephone, int numeroSequentiel, Date dateNaissance, long numCarteB, boolean solvabilite,
-			boolean solde, String mailClient, String mdpClient) {
+			boolean solde, String mailClient, String mdpClient, boolean active, Conseiller conseiller, List<Role> roles,
+			List<Commande> listeCommande) {
 		super();
 		this.idClient = idClient;
 		this.nomClient = nomClient;
@@ -104,7 +116,13 @@ public class Client implements Serializable{
 		this.solde = solde;
 		this.mailClient = mailClient;
 		this.mdpClient = mdpClient;
+		this.active = active;
+		this.conseiller = conseiller;
+		this.roles = roles;
+		this.listeCommande = listeCommande;
 	}
+
+
 
 	//Getter et setters
 	public int getIdClient() {
@@ -219,13 +237,29 @@ public class Client implements Serializable{
 		this.listeCommande = listeCommande;
 	}
 
+	
+	
+	public boolean isActive() {
+		return active;
+	}
+
+
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+
 	//To string
+
 	@Override
 	public String toString() {
 		return "Client [idClient=" + idClient + ", nomClient=" + nomClient + ", prenomClient=" + prenomClient
 				+ ", civilite=" + civilite + ", adresse=" + adresse + ", telephone=" + telephone + ", numeroSequentiel="
 				+ numeroSequentiel + ", dateNaissance=" + dateNaissance + ", numCarteB=" + numCarteB + ", solvabilite="
-				+ solvabilite + ", mailClient=" + mailClient + ", mdpClient=" + mdpClient + "]";
+				+ solvabilite + ", solde=" + solde + ", mailClient=" + mailClient + ", mdpClient=" + mdpClient
+				+ ", active=" + active + ", conseiller=" + conseiller + ", roles=" + roles + ", listeCommande="
+				+ listeCommande + "]";
 	}
 	
 	
