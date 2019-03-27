@@ -95,6 +95,8 @@ public class VoyageDaoImpl implements IVoyageDao {
 
 		String req = "SELECT v FROM Voyage v WHERE v.destination=:pDest";
 		Query query = s.createQuery(req);
+		
+		query.setParameter("pDest", d);
 
 		List<Voyage> listeV = query.list();
 
@@ -110,7 +112,7 @@ public class VoyageDaoImpl implements IVoyageDao {
 		// recupération du bus
 		Session s = sf.getCurrentSession();
 
-		String req = "SELECT v FROM Voyage v";
+		String req = "SELECT v FROM Voyage v WHERE v.prix=:";
 		Query query = s.createQuery(req);
 
 		List<Voyage> listeV = query.list();
