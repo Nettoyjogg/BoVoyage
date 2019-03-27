@@ -1,7 +1,9 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -9,7 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="voyages")
@@ -38,25 +46,31 @@ public class Voyage implements Serializable{
 	private Destination destination;
 	@Embedded
 	private PrestationHebergement prestation;
+	@Column(name = "photo_v")
+	@Lob
+	private byte[] photo;
+	@Transient
+	private String img;
 	
 	//Déclaration des 3	 CONSTRUCTEURS
 	public Voyage() {
 		super();
 	}
-	public Voyage(int placesLibres, Date dateDepart, Date dateRetour, double prix, boolean statut, Formule formule,
-			Destination destination, PrestationHebergement prestation) {
-		super();
-		this.placesLibres = placesLibres;
-		this.dateDepart = dateDepart;
-		this.dateRetour = dateRetour;
-		this.prix = prix;
-		this.statut = statut;
-		this.formule = formule;
-		this.destination = destination;
-		this.prestation = prestation;
-	}
+
+	
+	//Transition de l'association UML en JAVA
+	@OneToMany
+	@JoinColumn(name = "com_id", referencedColumnName = "id_com")
+	private List<Commande> commande;
+	
+	@ManyToOne
+	@JoinColumn(name = "bo_id", referencedColumnName = "id_bo")
+	private BoVoyage boVoyage;
+	
+	
+	
 	public Voyage(int idVoyage, int placesLibres, Date dateDepart, Date dateRetour, double prix, boolean statut,
-			Formule formule, Destination destination, PrestationHebergement prestation) {
+			Formule formule, Destination destination, PrestationHebergement prestation, byte[] photo, String img) {
 		super();
 		this.idVoyage = idVoyage;
 		this.placesLibres = placesLibres;
@@ -67,8 +81,27 @@ public class Voyage implements Serializable{
 		this.formule = formule;
 		this.destination = destination;
 		this.prestation = prestation;
+		this.photo = photo;
+		this.img = img;
 	}
-	
+
+
+	public Voyage(int placesLibres, Date dateDepart, Date dateRetour, double prix, boolean statut, Formule formule,
+			Destination destination, PrestationHebergement prestation, byte[] photo, String img) {
+		super();
+		this.placesLibres = placesLibres;
+		this.dateDepart = dateDepart;
+		this.dateRetour = dateRetour;
+		this.prix = prix;
+		this.statut = statut;
+		this.formule = formule;
+		this.destination = destination;
+		this.prestation = prestation;
+		this.photo = photo;
+		this.img = img;
+	}
+
+
 	//Déclaration des getters et setters
 	public int getIdVoyage() {
 		return idVoyage;
@@ -124,14 +157,57 @@ public class Voyage implements Serializable{
 	public void setPrestation(PrestationHebergement prestation) {
 		this.prestation = prestation;
 	}
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+
+
+	public String getImg() {
+		return img;
+	}
+
+
+	public void setImg(String img) {
+		this.img = img;
+	}
 	
+	
+
+	public BoVoyage getBoVoyage() {
+		return boVoyage;
+	}
+
+
+	public void setBoVoyage(BoVoyage boVoyage) {
+		this.boVoyage = boVoyage;
+	}
+
+	
+
+	public List<Commande> getCommande() {
+		return commande;
+	}
+
+
+	public void setCommande(List<Commande> commande) {
+		this.commande = commande;
+	}
+
+
 	//To string
 	@Override
 	public String toString() {
 		return "Voyage [idVoyage=" + idVoyage + ", placesLibres=" + placesLibres + ", dateDepart=" + dateDepart
 				+ ", dateRetour=" + dateRetour + ", prix=" + prix + ", statut=" + statut + ", formule=" + formule
-				+ ", destination=" + destination + ", prestation=" + prestation + "]";
+				+ ", destination=" + destination + ", prestation=" + prestation + ", photo=" + Arrays.toString(photo)
+				+ ", img=" + img + "]";
 	}
+
+
 	
 	
 }

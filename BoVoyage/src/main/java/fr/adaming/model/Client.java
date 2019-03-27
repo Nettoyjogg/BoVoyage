@@ -2,12 +2,16 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -39,19 +43,35 @@ public class Client implements Serializable{
 	@Column(name = "numCarte_c")
 	private long numCarteB;
 	@Column(name = "solvabilite_c")
-	private double solvabilite;
+	private boolean solvabilite;
+	@Column(name = "solde_c")
+	private boolean solde;
 	@Column(name = "mail_c")
 	private String mailClient;
 	@Column(name = "mdp_c")
 	private String mdpClient;
 	
+	
+	
+	//Transition de l'association UML en JAVA
+	@ManyToOne
+	@JoinColumn(name = "co_id", referencedColumnName = "id_co")
+	private Conseiller conseiller;
+	
+	@OneToMany(mappedBy="client")
+	private List<Role> roles;
+	
+	
+	@OneToMany(mappedBy="client")
+	private List<Commande> commande;
 	//Constructeurs
 	public Client() {
 		super();
 	}
+	
 	public Client(String nomClient, String prenomClient, String civilite, String adresse, String telephone,
-			int numeroSequentiel, Date dateNaissance, long numCarteB, double solvabilite, String mailClient,
-			String mdpClient) {
+			int numeroSequentiel, Date dateNaissance, long numCarteB, boolean solvabilite, boolean solde,
+			String mailClient, String mdpClient) {
 		super();
 		this.nomClient = nomClient;
 		this.prenomClient = prenomClient;
@@ -62,12 +82,14 @@ public class Client implements Serializable{
 		this.dateNaissance = dateNaissance;
 		this.numCarteB = numCarteB;
 		this.solvabilite = solvabilite;
+		this.solde = solde;
 		this.mailClient = mailClient;
 		this.mdpClient = mdpClient;
 	}
+	
 	public Client(int idClient, String nomClient, String prenomClient, String civilite, String adresse,
-			String telephone, int numeroSequentiel, Date dateNaissance, long numCarteB, double solvabilite,
-			String mailClient, String mdpClient) {
+			String telephone, int numeroSequentiel, Date dateNaissance, long numCarteB, boolean solvabilite,
+			boolean solde, String mailClient, String mdpClient) {
 		super();
 		this.idClient = idClient;
 		this.nomClient = nomClient;
@@ -79,10 +101,11 @@ public class Client implements Serializable{
 		this.dateNaissance = dateNaissance;
 		this.numCarteB = numCarteB;
 		this.solvabilite = solvabilite;
+		this.solde = solde;
 		this.mailClient = mailClient;
 		this.mdpClient = mdpClient;
 	}
-	
+
 	//Getter et setters
 	public int getIdClient() {
 		return idClient;
@@ -138,12 +161,23 @@ public class Client implements Serializable{
 	public void setNumCarteB(long numCarteB) {
 		this.numCarteB = numCarteB;
 	}
-	public double getSolvabilite() {
+
+	public boolean isSolvabilite() {
 		return solvabilite;
 	}
-	public void setSolvabilite(double solvabilite) {
+
+	public void setSolvabilite(boolean solvabilite) {
 		this.solvabilite = solvabilite;
 	}
+
+	public boolean isSolde() {
+		return solde;
+	}
+
+	public void setSolde(boolean solde) {
+		this.solde = solde;
+	}
+
 	public String getMailClient() {
 		return mailClient;
 	}
@@ -158,6 +192,31 @@ public class Client implements Serializable{
 	}
 	
 	
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
+	
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+
 	//To string
 	@Override
 	public String toString() {

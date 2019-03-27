@@ -1,12 +1,14 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -27,6 +29,15 @@ public class Conseiller implements Serializable{
 	private String mailConseiller;
 	@Column(name = "mdp_co")
 	private String mdpConseiller;
+	
+	//transformation de l'association UML en JAVA
+	@OneToMany(mappedBy="conseiller")
+	private List<Client> clients;
+	
+	
+	@OneToMany(mappedBy="conseiller")
+	private List<Role> roles;
+	
 	
 	//constructeurs
 	public Conseiller() {
@@ -71,6 +82,21 @@ public class Conseiller implements Serializable{
 	public void setMdpConseiller(String mdpConseiller) {
 		this.mdpConseiller = mdpConseiller;
 	}
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	public List<Client> getClients() {
+		return clients;
+	}
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+	
+	
 	
 	//To string
 	@Override

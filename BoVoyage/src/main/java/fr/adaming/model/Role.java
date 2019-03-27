@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +25,17 @@ public class Role implements Serializable{
 	private int id;
 	@Column(name="roleName_r")
 	private String roleName;
+	
+	
+	//Transformation de l'associtation UML en JAVA
+	@ManyToOne
+	@JoinColumn(name="co_id",referencedColumnName="id_co")
+	private Conseiller conseiller;
+	
+	@ManyToOne
+	@JoinColumn(name="c_id",referencedColumnName="id_c")
+	private Client client;
+	
 	
 	//constructeur 
 	public Role() {
@@ -49,6 +62,18 @@ public class Role implements Serializable{
 	}
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	

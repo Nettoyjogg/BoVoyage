@@ -12,6 +12,8 @@ public class Formule implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	//Déclaration des attibuts
+	@Column(name="nom_formule_v")
+	private String nomFormule;
 	@Column(name = "avion_formule_v")
 	private String avion;
 	@Embedded
