@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -59,9 +58,8 @@ public class Voyage implements Serializable{
 
 	
 	//Transition de l'association UML en JAVA
-	@OneToMany
-	@JoinColumn(name = "com_id", referencedColumnName = "id_com")
-	private List<Commande> commande;
+	@OneToMany(mappedBy="voyage")
+	private List<Commande> listeCommande;
 	
 	@ManyToOne
 	@JoinColumn(name = "bo_id", referencedColumnName = "id_bo")
@@ -186,17 +184,14 @@ public class Voyage implements Serializable{
 		this.boVoyage = boVoyage;
 	}
 
-	
 
-	public List<Commande> getCommande() {
-		return commande;
+	public List<Commande> getListeCommande() {
+		return listeCommande;
 	}
 
-
-	public void setCommande(List<Commande> commande) {
-		this.commande = commande;
+	public void setListeCommande(List<Commande> listeCommande) {
+		this.listeCommande = listeCommande;
 	}
-
 
 	//To string
 	@Override
@@ -204,8 +199,10 @@ public class Voyage implements Serializable{
 		return "Voyage [idVoyage=" + idVoyage + ", placesLibres=" + placesLibres + ", dateDepart=" + dateDepart
 				+ ", dateRetour=" + dateRetour + ", prix=" + prix + ", statut=" + statut + ", formule=" + formule
 				+ ", destination=" + destination + ", prestation=" + prestation + ", photo=" + Arrays.toString(photo)
-				+ ", img=" + img + "]";
+				+ ", img=" + img + ", listeCommande=" + listeCommande + ", boVoyage=" + boVoyage + "]";
 	}
+
+
 
 
 	

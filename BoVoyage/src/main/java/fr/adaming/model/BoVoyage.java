@@ -29,8 +29,7 @@ public class BoVoyage implements Serializable{
 	private String telephoneBoVoyage;
 	
 	//Transition de l'association UML en JAVA
-	@OneToMany
-	@JoinColumn(name="v_id",referencedColumnName="id_v")
+	@OneToMany(mappedBy="boVoyage")
 	private List<Voyage> listeVoyage;
 	
 	//constructeur
