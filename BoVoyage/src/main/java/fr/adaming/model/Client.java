@@ -63,7 +63,7 @@ public class Client implements Serializable{
 	
 	
 	@OneToMany(mappedBy="client")
-	private List<Commande> commande;
+	private List<Commande> listeCommande;
 	//Constructeurs
 	public Client() {
 		super();
@@ -209,12 +209,14 @@ public class Client implements Serializable{
 		this.roles = roles;
 	}
 
-	public Commande getCommande() {
-		return commande;
+
+
+	public List<Commande> getListeCommande() {
+		return listeCommande;
 	}
 
-	public void setCommande(Commande commande) {
-		this.commande = commande;
+	public void setListeCommande(List<Commande> listeCommande) {
+		this.listeCommande = listeCommande;
 	}
 
 	//To string
