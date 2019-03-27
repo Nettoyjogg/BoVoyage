@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%response.sendRedirect("client/liste"); %>
+<%response.sendRedirect("voyage/liste"); %>
 </body>
 </html>
