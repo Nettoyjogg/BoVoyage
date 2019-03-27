@@ -112,8 +112,11 @@ public class VoyageDaoImpl implements IVoyageDao {
 		// recupération du bus
 		Session s = sf.getCurrentSession();
 
-		String req = "SELECT v FROM Voyage v WHERE v.prix=:";
+		String req = "SELECT v FROM Voyage v WHERE v.prix BETWEEN :pMin AND :pMax";
 		Query query = s.createQuery(req);
+		
+		query.setParameter("pMin", min);
+		query.setParameter("pMax", max);
 
 		List<Voyage> listeV = query.list();
 
@@ -129,8 +132,11 @@ public class VoyageDaoImpl implements IVoyageDao {
 		// recupération du bus
 		Session s = sf.getCurrentSession();
 
-		String req = "SELECT v FROM Voyage v";
+		String req = "SELECT v FROM Voyage v WHERE v.dateDepart >= :pDep AND v.dateRetour <= :pRet";
 		Query query = s.createQuery(req);
+		
+		query.setParameter("pDep", depart);
+		query.setParameter("pRet", retour);
 
 		List<Voyage> listeV = query.list();
 
