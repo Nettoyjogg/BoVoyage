@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Conseiller;
-import fr.adaming.model.Etudiant;
 
 
 @Repository // pour dire que c'est un DAO
