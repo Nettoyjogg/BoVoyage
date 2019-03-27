@@ -63,7 +63,7 @@
 			<security:jdbc-user-service
 				data-source-ref="datasourceBean1"
 				users-by-username-query="SELECT mail_co,mdp_co,active_co FROM conseillers WHERE mail_co=?"
-				authorities-by-username-query="SELECT co.mail_co,r.roleName FROM conseillers co, roles r WHERE co.mail_co=? AND co.id_co=r.co_id" />
+				authorities-by-username-query="SELECT co.mail_co,r.roleName_r FROM conseillers co, roles r WHERE co.mail_co=? AND co.id_co=r.co_id" />
 
 
 		</security:authentication-provider>
