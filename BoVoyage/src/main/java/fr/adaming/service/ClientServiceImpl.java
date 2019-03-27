@@ -48,6 +48,11 @@ public class ClientServiceImpl implements IClientService{
 	public Client rechercherClientParId(Client c) {
 		return clientDao.rechercherClientParId(c);
 	}
+
+	@Override
+	public Client existe(Client c) {
+	return clientDao.existe(c);
+	}
 		
 		
 	

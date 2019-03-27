@@ -112,4 +112,27 @@ public class ClientDaoImpl implements IClientDao{
 		return (Client) queryHQL.uniqueResult();
 	}
 
+
+
+
+	@Override
+	public Client existe(Client c) {
+		//récupérer le bus (session de hibernate
+		Session s=sf.getCurrentSession();
+		
+		//requete HQL
+		String req="FROM Client as c WHERE c.mailClient=:pMail AND c.mdpClient=:pMdp";
+		
+		//récupérer le query
+		Query query = s.createQuery(req);
+		
+		//passage des params
+		
+		query.setParameter("pMail", c.getMailClient());
+		query.setParameter("pMdp", c.getMdpClient());
+		
+		return (Client) query.uniqueResult();
+	
+	}
+
 }

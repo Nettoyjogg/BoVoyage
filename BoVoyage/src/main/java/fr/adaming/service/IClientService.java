@@ -17,4 +17,6 @@ public interface IClientService {
 
 	public Client rechercherClientParId(Client c);
 	
+	public Client existe(Client c);
+	
 }
