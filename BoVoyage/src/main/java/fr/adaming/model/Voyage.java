@@ -16,6 +16,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
@@ -32,8 +34,10 @@ public class Voyage implements Serializable{
 	@Column(name = "place_v")
 	private int placesLibres;
 	@Column(name="datedep_v")
+	@Temporal(TemporalType.DATE)
 	private Date dateDepart;
 	@Column(name="dateret_v")
+	@Temporal(TemporalType.DATE)
 	private Date dateRetour;
 	@Column(name="prix_v")
 	private double prix;

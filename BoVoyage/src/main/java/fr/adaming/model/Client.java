@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -39,6 +41,7 @@ public class Client implements Serializable{
 	@Column(name = "numSequence_c")
 	private int numeroSequentiel;
 	@Column(name = "date_c")
+	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 	@Column(name = "numCarte_c")
 	private long numCarteB;
@@ -75,8 +78,7 @@ public class Client implements Serializable{
 
 	public Client(String nomClient, String prenomClient, String civilite, String adresse, String telephone,
 			int numeroSequentiel, Date dateNaissance, long numCarteB, boolean solvabilite, boolean solde,
-			String mailClient, String mdpClient, boolean active, Conseiller conseiller, List<Role> roles,
-			List<Commande> listeCommande) {
+			String mailClient, String mdpClient, boolean active) {
 		super();
 		this.nomClient = nomClient;
 		this.prenomClient = prenomClient;
@@ -91,17 +93,14 @@ public class Client implements Serializable{
 		this.mailClient = mailClient;
 		this.mdpClient = mdpClient;
 		this.active = active;
-		this.conseiller = conseiller;
-		this.roles = roles;
-		this.listeCommande = listeCommande;
+
 	}
 
 
 
 	public Client(int idClient, String nomClient, String prenomClient, String civilite, String adresse,
 			String telephone, int numeroSequentiel, Date dateNaissance, long numCarteB, boolean solvabilite,
-			boolean solde, String mailClient, String mdpClient, boolean active, Conseiller conseiller, List<Role> roles,
-			List<Commande> listeCommande) {
+			boolean solde, String mailClient, String mdpClient, boolean active) {
 		super();
 		this.idClient = idClient;
 		this.nomClient = nomClient;
@@ -117,9 +116,7 @@ public class Client implements Serializable{
 		this.mailClient = mailClient;
 		this.mdpClient = mdpClient;
 		this.active = active;
-		this.conseiller = conseiller;
-		this.roles = roles;
-		this.listeCommande = listeCommande;
+
 	}
 
 

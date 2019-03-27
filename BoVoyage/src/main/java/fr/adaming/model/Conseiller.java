@@ -47,28 +47,25 @@ public class Conseiller implements Serializable{
 	}
 
 	
-	public Conseiller(String nomConseiller, String mailConseiller, String mdpConseiller, boolean active,
-			List<Client> clients, List<Role> roles) {
+	public Conseiller(String nomConseiller, String mailConseiller, String mdpConseiller, boolean active) {
 		super();
 		this.nomConseiller = nomConseiller;
 		this.mailConseiller = mailConseiller;
 		this.mdpConseiller = mdpConseiller;
 		this.active = active;
-		this.clients = clients;
-		this.roles = roles;
+
 	}
 
 
 	public Conseiller(int idConseiller, String nomConseiller, String mailConseiller, String mdpConseiller,
-			boolean active, List<Client> clients, List<Role> roles) {
+			boolean active) {
 		super();
 		this.idConseiller = idConseiller;
 		this.nomConseiller = nomConseiller;
 		this.mailConseiller = mailConseiller;
 		this.mdpConseiller = mdpConseiller;
 		this.active = active;
-		this.clients = clients;
-		this.roles = roles;
+
 	}
 
 
