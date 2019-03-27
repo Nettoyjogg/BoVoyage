@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Conseiller;
+import fr.adaming.model.Etudiant;
 
 
 @Repository // pour dire que c'est un DAO
@@ -59,39 +60,57 @@ public class ClientDaoImpl implements IClientDao{
 		Session s=sf.getCurrentSession();
 		String req = "UPDATE Client as c SET c.nomClient=:pNom, c.prenomClient=:pPrenom, c.civilite=:pCivilite, c.adresse=:pAdresse, c.telephone=pTelephone,"
 				+ " c.numeroSequentiel=:pNumeroSequentiel,c.dateNaissance=:pDateNaissance,c.numCarteB=:pNumCarteB,c.solvabilite=:pSolvabilite,c.solde=:pSolde,"
-				+ " c.mailClient=:pMailClient,c.mdpClient=:pMdpClient,c.active=:pActive,c.conseiller=:pConseiller,c.roles:=pRoles, WHERE e.id=:pIde AND e.formateur.id=:pIdf";
+				+ " c.mailClient=:pMailClient,c.mdpClient=:pMdpClient,c.active=:pActive WHERE c.idClient=:pId";
 		
 		//Récupérer un objet de type Query
 		Query query=s.createQuery(req);		
 		
 		//Passage des paramètres
-		query.setParameter("pIde", e.getId());
-		query.setParameter("pIdf", e.getFormateur().getId());
-		query.setParameter("pNom", e.getNom());
-		query.setParameter("pPrenom", e.getPrenom());
-		query.setParameter("pDn", e.getDn());
+		query.setParameter("pNom", c.getNomClient());
+		query.setParameter("pPrenom", c.getPrenomClient());
+		query.setParameter("pCivilite", c.getCivilite());
+		query.setParameter("pAdresse", c.getAdresse());
+		query.setParameter("pTelephone", c.getTelephone());
+		query.setParameter("pNumeroSequentiel", c.getNumeroSequentiel());
+		query.setParameter("pDateNaissance", c.getDateNaissance());
+		query.setParameter("pNumCarteB", c.getNumCarteB());
+		query.setParameter("pSolvabilite",c.isSolvabilite());
+		query.setParameter("pSolde", c.getSolde());
+		query.setParameter("pMailClient", c.getMailClient());
+		query.setParameter("pMdpClient", c.getMdpClient());
+		query.setParameter("pActive", c.isActive());
+		query.setParameter("pId", c.getIdClient());
 
-	
-		
-		this.conseiller = conseiller;
-		this.roles = roles;
-		this.listeCommande = listeCommande
-		
-		
-		
-return query.executeUpdate();
+
+		return query.executeUpdate();
 	}
 
 	@Override
 	public int supprimerClient(Client c) {
-		// TODO Auto-generated method stub
-		return 0;
+		Session s=sf.getCurrentSession();
+		String req = "DELETE Client as c  WHERE c.idClient=:pId";
+		
+		//Récupérer un objet de type Query
+		Query query=s.createQuery(req);		
+		
+		//Passage des paramètres
+		query.setParameter("pId", c.getIdClient());
+		return query.executeUpdate();
 	}
 
 	@Override
 	public Client rechercherClientParId(Client c) {
-		// TODO Auto-generated method stub
-		return null;
+		Session s=sf.getCurrentSession();
+		
+		String req="FROM Client as c WHERE c.idClient=:pId";
+		
+		
+		Query queryHQL = s.createQuery(req);
+		
+		//passage des params
+		queryHQL.setParameter("pId", c.getIdClient());
+	
+		return (Client) queryHQL.uniqueResult();
 	}
 
 }

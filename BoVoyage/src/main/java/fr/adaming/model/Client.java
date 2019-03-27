@@ -48,7 +48,7 @@ public class Client implements Serializable{
 	@Column(name = "solvabilite_c")
 	private boolean solvabilite;
 	@Column(name = "solde_c")
-	private boolean solde;
+	private double solde;
 	@Column(name = "mail_c")
 	private String mailClient;
 	@Column(name = "mdp_c")
@@ -77,7 +77,7 @@ public class Client implements Serializable{
 
 
 	public Client(String nomClient, String prenomClient, String civilite, String adresse, String telephone,
-			int numeroSequentiel, Date dateNaissance, long numCarteB, boolean solvabilite, boolean solde,
+			int numeroSequentiel, Date dateNaissance, long numCarteB, boolean solvabilite, double solde,
 			String mailClient, String mdpClient, boolean active) {
 		super();
 		this.nomClient = nomClient;
@@ -100,7 +100,7 @@ public class Client implements Serializable{
 
 	public Client(int idClient, String nomClient, String prenomClient, String civilite, String adresse,
 			String telephone, int numeroSequentiel, Date dateNaissance, long numCarteB, boolean solvabilite,
-			boolean solde, String mailClient, String mdpClient, boolean active) {
+			double solde, String mailClient, String mdpClient, boolean active) {
 		super();
 		this.idClient = idClient;
 		this.nomClient = nomClient;
@@ -185,11 +185,11 @@ public class Client implements Serializable{
 		this.solvabilite = solvabilite;
 	}
 
-	public boolean isSolde() {
+	public double getSolde() {
 		return solde;
 	}
 
-	public void setSolde(boolean solde) {
+	public void setSolde(double solde) {
 		this.solde = solde;
 	}
 
