@@ -61,9 +61,6 @@ public class ClientController {
 			return new ModelAndView("accueil", "liste", vService.afficherVoyages());
 		}
 		
-		
-		
-		
 		//--------------------FONCTIONNALITE AJOUTER
 		@RequestMapping(value="/afficheAjouter",method=RequestMethod.GET)
 		public String afficheAjout(Model modele){
@@ -83,6 +80,9 @@ public class ClientController {
 				return "redirect:afficheAjouter";
 			}
 			
-		}	
+		}
+		
+		
+			
 
 }

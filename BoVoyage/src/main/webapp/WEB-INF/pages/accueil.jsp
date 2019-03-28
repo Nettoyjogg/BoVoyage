@@ -23,14 +23,17 @@
 
 <table class="table table-striped">
 <tr>
-<th>Id</th>
-<th>places libres </th>
+
+<th>Prix </th>
+<th>Pays de destination</th>
+<th>places libres</th>
 
 </tr>
 
 <c:forEach items="${liste}" var="v">
 <tr>
-<td>${v.idVoyage}</td>
+<td>${v.prix}</td>
+<td>${v.pays}</td>
 <td>${v.placesLibres}</td>
 </tr>
 

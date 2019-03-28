@@ -59,6 +59,7 @@ public class ClientDaoImpl implements IClientDao{
 		r.setRoleName("ROLE_CLIENT");
 		r.setRoleMail(c.getMailClient());
 		r.setRoleMdp(c.getMdpClient());
+		r.setRoleActive(c.isActive());
 		s.save(r);
 		
 		return c;

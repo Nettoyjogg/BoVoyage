@@ -49,7 +49,7 @@ form{
   cursor: pointer;
   border-radius: 10px 10px 10px 10px;
 }
-.bouttonConnexion:hover,.bouttonConnexion button:active,.bouttonConnexion:focus {
+.bouttonConnexion:hover,.bouttonConnexion:active,.bouttonConnexion:focus {
   background: #43A047;
 }
 .form .message {

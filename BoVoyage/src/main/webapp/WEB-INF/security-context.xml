@@ -28,7 +28,7 @@
 	<security:http>
 		<!-- Spécifier les URL à sécurisé grâce a la balise intercept URL via l'attribut 
 			pattern et donner les authorisations via l'attribut access -->
-		<security:intercept-url pattern="/client/**"
+		<security:intercept-url pattern="/client/liste"
 			access="ROLE_CLIENT" />
 		<security:intercept-url pattern="/conseiller/**"
 			access="ROLE_CONS" />
