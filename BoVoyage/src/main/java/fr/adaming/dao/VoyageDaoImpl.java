@@ -44,7 +44,7 @@ public class VoyageDaoImpl implements IVoyageDao {
 	public Voyage ajouterVoyage(Voyage v) {
 		// recupération du bus
 		Session s = sf.getCurrentSession();
-
+		v.setStatut(true);
 		s.save(v);
 		return v;
 	}
@@ -74,11 +74,17 @@ public class VoyageDaoImpl implements IVoyageDao {
 
 	@Override
 	public Voyage rechercherVoyage(Voyage v) {
-		Session s = sf.getCurrentSession();
-
-		Voyage vOut = (Voyage) s.get(Voyage.class, v.getIdVoyage());
-//		vOut.setImg("data:image/png;base64," + Base64.encodeBase64String(vOut.getPhoto()));
-		return vOut;
+		Session s=sf.getCurrentSession();
+		
+		String req="FROM Voyage as v WHERE v.idVoyage=:pId";
+		
+		
+		Query queryHQL = s.createQuery(req);
+		
+		//passage des params
+		queryHQL.setParameter("pId", v.getIdVoyage());
+	
+		return (Voyage) queryHQL.uniqueResult();
 	}
 
 	@Override

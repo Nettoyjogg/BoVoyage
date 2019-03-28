@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<form:form method="POST" action="soumettreAjouter" commandName="vAjout"
+<form:form method="POST" action="soumettreAjouterVoyage" commandName="vAjout"
 		cssClass="form-horizontal" enctype="multipart/form-data">
 
 		<div class="form-group">

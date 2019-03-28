@@ -19,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.model.Destination;
-import fr.adaming.model.Voiture;
 import fr.adaming.model.Voyage;
 import fr.adaming.service.IVoyageService;
 
@@ -72,10 +71,10 @@ public class VoyageController {
 		return "ajout_voyage";
 	}
 
-	@RequestMapping(value = "/soumettreAjouter", method = RequestMethod.POST)
+	@RequestMapping(value = "/soumettreAjouterVoyage", method = RequestMethod.POST)
 	public String soumettreAjout(@ModelAttribute("vAjout") Voyage v, RedirectAttributes ra) {
 		// appel methode service
-		v.setStatut(true);
+		
 		Voyage vOut = vService.ajouterVoyage(v);
 
 		if (vOut.getIdVoyage() != 0) {
@@ -227,5 +226,7 @@ public class VoyageController {
 			return new ModelAndView("accueil");
 		}
 	}
-
+	
 }
+
+
