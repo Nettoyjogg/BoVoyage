@@ -15,7 +15,8 @@ public class LoginController {
 	
 	@RequestMapping(value="/logoutUrl",method=RequestMethod.GET)
 	public String affichePageLogout(){
-		return "loginPage";
+		return "indexRedirection";
+		
 	}
 	
 	@RequestMapping(value="/echecUrl",method=RequestMethod.GET)

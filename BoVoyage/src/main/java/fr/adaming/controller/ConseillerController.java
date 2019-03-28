@@ -20,9 +20,9 @@ import fr.adaming.service.IConseillerService;
 import fr.adaming.service.IVoyageService;
 
 @Controller
-@RequestMapping("/client")
+@RequestMapping("/conseiller")
 @Scope("session")
-public class ClientController {
+public class ConseillerController {
 	
 	//transformation de l'association UML en JAVA
 		@Autowired
@@ -54,7 +54,7 @@ public class ClientController {
 	
 		@RequestMapping(value = "/liste", method = RequestMethod.GET)
 		public ModelAndView afficherVoyage() {
-			return new ModelAndView("accueil", "liste", vService.afficherVoyages());
+			return new ModelAndView("accueilConseiller", "liste", vService.afficherVoyages());
 		}
 		
 		
