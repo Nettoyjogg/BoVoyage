@@ -49,7 +49,9 @@ public class ClientDaoImpl implements IClientDao{
 	public Client ajouterClient(Client c) {
 		//récupérer le bus (session de hibernate
 		Session s=sf.getCurrentSession();
-		
+		c.setActive(true);
+		int num = 1+ (int) (Math.random() * 9999);
+		c.setNumeroSequentiel(num);
 		s.save(c);
 		//Test
 		Role r = new Role();
