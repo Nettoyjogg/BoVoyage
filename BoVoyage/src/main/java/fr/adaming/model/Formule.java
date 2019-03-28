@@ -12,9 +12,9 @@ public class Formule implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	//Déclaration des attibuts
-	@Column(name="nom_formule_v")
+	@Column(name="nom_formule_com")
 	private String nomFormule;
-	@Column(name = "avion_formule_v")
+	@Column(name = "avion_formule_com")
 	private String avion;
 	@Embedded
 	private Hotel hotel;

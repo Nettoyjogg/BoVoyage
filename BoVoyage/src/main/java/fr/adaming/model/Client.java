@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 
 @Entity
@@ -38,7 +39,7 @@ public class Client implements Serializable{
 	private String adresse;
 	@Column(name = "telephone_c")
 	private String telephone;
-	@Column(name = "numSequence_c")
+	@Column(name = "numSequence_c",unique=true)
 	private int numeroSequentiel;
 	@Column(name = "date_c")
 	@Temporal(TemporalType.DATE)

@@ -54,8 +54,8 @@ public class VoyageDaoImpl implements IVoyageDao {
 		// recup le bus
 		Session s = sf.getCurrentSession();
 		String req = "UPDATE Voyage v SET " + "v.placesLibres=:pPlaces, " + "v.dateDepart=:pDDep, "
-				+ "v.dateRetour=:pDRet, " + "v.prix=:pPrix, " + "v.statut=:pStat, " + "v.formule=:pForm, "
-				+ "v.destination=:pDest, " + "v.prestation=:pPrest, " + "v.photo=:pPhot " + "WHERE v.idVoyage=:pId";
+				+ "v.dateRetour=:pDRet, " + "v.prix=:pPrix, " + "v.statut=:pStat, " 
+				+ "v.destination=:pDest, " + "v.photo=:pPhot " + "WHERE v.idVoyage=:pId";
 		Query query = s.createQuery(req);
 
 		query.setParameter("pPlaces", v.getPlacesLibres());
@@ -63,9 +63,7 @@ public class VoyageDaoImpl implements IVoyageDao {
 		query.setParameter("pDRet", v.getDateRetour());
 		query.setParameter("pPrix", v.getPrix());
 		query.setParameter("pStat", v.isStatut());
-		query.setParameter("pForm", v.getFormule());
 		query.setParameter("pDest", v.getDestination());
-		query.setParameter("pPrest", v.getPrestation());
 		query.setParameter("pPhot", v.getPhoto());
 
 		query.setParameter("pId", v.getIdVoyage());

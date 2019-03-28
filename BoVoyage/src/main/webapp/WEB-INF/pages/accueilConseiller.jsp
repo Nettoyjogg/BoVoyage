@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>accueil</title>
+<title>accueil Conseiller</title>
 
 <!-- ajouter le fichier bootstrap -->
 <link rel="stylesheet"
@@ -17,23 +17,20 @@
 </head>
 <body>
 	
-<%@ include file="templates/navbar.html" %>	
+<%@ include file="templates/navbarconseiller.html" %>	
 	
 	<h1 style="color:blue; text-align: center;">liste des voyages</h1>
 
 <table class="table table-striped">
 <tr>
-
-<th>Prix </th>
-<th>Pays de destination</th>
-<th>places libres</th>
+<th>Id</th>
+<th>places libres </th>
 
 </tr>
 
 <c:forEach items="${liste}" var="v">
 <tr>
-<td>${v.prix}</td>
-<td>${v.pays}</td>
+<td>${v.idVoyage}</td>
 <td>${v.placesLibres}</td>
 </tr>
 

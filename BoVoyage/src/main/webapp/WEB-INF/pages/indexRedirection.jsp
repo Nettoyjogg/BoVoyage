@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>ACCES REFUSE</h1>
-<h4><a href="${pageContext.request.contextPath}/voyage/liste">Retour à l'accueil</a></h4>
+<%response.sendRedirect("voyage/liste"); %>
 </body>
 </html>

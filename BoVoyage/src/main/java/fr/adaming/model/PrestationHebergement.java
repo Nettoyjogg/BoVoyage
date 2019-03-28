@@ -13,7 +13,7 @@ public class PrestationHebergement implements Serializable{
 	
 	
 	//déclaration des attributs
-	@Column(name = "type_presta_v")
+	@Column(name = "type_presta_com")
 	private String type;
 
 	//Constructeurs

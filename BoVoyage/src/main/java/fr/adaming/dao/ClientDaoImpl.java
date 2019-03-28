@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Conseiller;
+import fr.adaming.model.Role;
 
 
 @Repository // pour dire que c'est un DAO
@@ -48,8 +49,19 @@ public class ClientDaoImpl implements IClientDao{
 	public Client ajouterClient(Client c) {
 		//récupérer le bus (session de hibernate
 		Session s=sf.getCurrentSession();
-		
+		c.setActive(true);
+		int num = 1+ (int) (Math.random() * 9999);
+		c.setNumeroSequentiel(num);
 		s.save(c);
+		//Test
+		Role r = new Role();
+		r.setClient(c);
+		r.setRoleName("ROLE_CLIENT");
+		r.setRoleMail(c.getMailClient());
+		r.setRoleMdp(c.getMdpClient());
+		r.setRoleActive(c.isActive());
+		s.save(r);
+		
 		return c;
 	}
 
