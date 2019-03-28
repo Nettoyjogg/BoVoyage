@@ -29,7 +29,7 @@
 		<!-- Spécifier les URL à sécurisé grâce a la balise intercept URL via l'attribut 
 			pattern et donner les authorisations via l'attribut access -->
 		<security:intercept-url pattern="/client/**"
-			access="ROLE_CONS" />
+			access="ROLE_CLIENT" />
 
 
 

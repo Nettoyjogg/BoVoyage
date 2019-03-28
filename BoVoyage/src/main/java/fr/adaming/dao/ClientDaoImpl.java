@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Conseiller;
+import fr.adaming.model.Role;
 
 
 @Repository // pour dire que c'est un DAO
@@ -50,6 +51,14 @@ public class ClientDaoImpl implements IClientDao{
 		Session s=sf.getCurrentSession();
 		
 		s.save(c);
+		//Test
+		Role r = new Role();
+		r.setClient(c);
+		r.setRoleName("ROLE_CLIENT");
+		r.setRoleMail(c.getMailClient());
+		r.setRoleMdp(c.getMdpClient());
+		s.save(r);
+		
 		return c;
 	}
 
