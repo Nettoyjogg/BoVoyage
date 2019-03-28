@@ -12,11 +12,11 @@ public class Voiture implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	//Déclaration des attributs
-	@Column(name = "categorie_voiture_v")
+	@Column(name = "categorie_voiture_com")
 	private String categorie;
-	@Column(name = "loueur_voiture_v")
+	@Column(name = "loueur_voiture_com")
 	private String nomLoueur;
-	@Column(name = "place_voiture_v")
+	@Column(name = "place_voiture_com")
 	private int nombrePlace;
 	
 	//Constructeurs

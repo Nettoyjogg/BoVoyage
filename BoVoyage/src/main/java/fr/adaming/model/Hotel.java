@@ -12,9 +12,9 @@ public class Hotel implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	//Déclaration des attributs
-	@Column(name = "nom_hotel_v")
+	@Column(name = "nom_hotel_com")
 	private String nomH;
-	@Column(name = "place_hotel_v")
+	@Column(name = "place_hotel_com")
 	private int nombreEtoile;
 	
 	//Déclaration des constructeurs

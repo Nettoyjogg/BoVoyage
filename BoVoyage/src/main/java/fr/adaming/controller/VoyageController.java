@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.model.Destination;
+import fr.adaming.model.Voiture;
 import fr.adaming.model.Voyage;
 import fr.adaming.service.IVoyageService;
 
@@ -63,6 +64,7 @@ public class VoyageController {
 	@RequestMapping(value = "/soumettreAjouter", method = RequestMethod.POST)
 	public String soumettreAjout(@ModelAttribute("vAjout") Voyage v, RedirectAttributes ra) {
 		// appel methode service
+		v.setStatut(true);
 		Voyage vOut = vService.ajouterVoyage(v);
 
 		if (vOut.getIdVoyage() != 0) {
@@ -197,14 +199,14 @@ public class VoyageController {
 		}
 
 		@RequestMapping(value = "/soumettrePrix", method = RequestMethod.POST)
-		public ModelAndView soumettrePrix(@ModelAttribute("vPrix") Date depart, Date retour, RedirectAttributes ra) {
+		public ModelAndView soumettrePrix(@ModelAttribute("vPrix") double min, double max, RedirectAttributes ra) {
 			// appel methode service
-			List<Voyage> lOut = vService.rechercherDate(depart, retour);
+			List<Voyage> lOut = vService.rechercherPrix(min, max);
 
 			if (lOut != null) {
 				return new ModelAndView("accueil", "liste", lOut);
 			} else {
-				ra.addFlashAttribute("msg", "Il n'y a pas de voyage prévu pour les dates que vous recherchez actuellement, revenez plus tard");
+				ra.addFlashAttribute("msg", "Il n'y a pas de voyage prévu dans la tranche de prix que vous recherchez actuellement, revenez plus tard");
 				return new ModelAndView("accueil");
 			}
 		}
