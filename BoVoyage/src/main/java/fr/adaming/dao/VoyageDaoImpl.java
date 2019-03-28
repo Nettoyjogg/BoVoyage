@@ -71,18 +71,13 @@ public class VoyageDaoImpl implements IVoyageDao {
 		return query.executeUpdate();
 	}
 
-	@Override
-	public int cloreVoyage(Voyage v) {
-		// A definir si on arrive pas à se dévir de la méthode modifier
-		return 0;
-	}
 
 	@Override
 	public Voyage rechercherVoyage(Voyage v) {
 		Session s = sf.getCurrentSession();
 
 		Voyage vOut = (Voyage) s.get(Voyage.class, v.getIdVoyage());
-		vOut.setImg("data:image/png;base64," + Base64.encodeBase64String(vOut.getPhoto()));
+//		vOut.setImg("data:image/png;base64," + Base64.encodeBase64String(vOut.getPhoto()));
 		return vOut;
 	}
 
