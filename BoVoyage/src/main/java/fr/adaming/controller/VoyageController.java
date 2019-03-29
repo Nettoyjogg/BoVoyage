@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.model.Destination;
@@ -177,7 +178,9 @@ public class VoyageController {
 		Voyage vOut = vService.rechercherVoyage(v);
 
 		if (vOut != null) {
-			return new ModelAndView("recherche_voyage", "voyage", vOut);
+			ModelAndView Modele1 = new ModelAndView("recherche_voyage", "voyage", vOut);
+			Modele1.addObject("listevoyage", vService.afficherVoyages());
+			return Modele1;
 		} else {
 			ra.addFlashAttribute("msg", "Le voyage que vous recherchez n'existe pas");
 			return new ModelAndView("recherche_voyage");
