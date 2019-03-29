@@ -1,5 +1,6 @@
 package fr.adaming.controller;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -73,8 +75,10 @@ public class VoyageController {
 	}
 
 	@RequestMapping(value = "/soumettreAjouterVoyage", method = RequestMethod.POST)
-	public String soumettreAjout(@ModelAttribute("vAjout") Voyage v, RedirectAttributes ra) {
+	public String soumettreAjout(@ModelAttribute("vAjout") Voyage v,MultipartFile file, RedirectAttributes ra) throws IOException {
 		// appel methode service
+		
+		if(!file.isEmpty()){v.setPhoto(file.getBytes());}
 		
 		Voyage vOut = vService.ajouterVoyage(v);
 
