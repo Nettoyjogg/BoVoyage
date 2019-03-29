@@ -66,13 +66,11 @@ public class VoyageDaoImplTest {
 	public void testModifierVoyage(){
 		Destination dest = new Destination("Europe", "Maroc");
 		Voyage v1 = new Voyage(10,null,null,300,true,dest,null,null);
-		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		System.out.println(v1);
 		voyageDao.ajouterVoyage(v1);
 		v1.setPrix(400);
 		int verif=voyageDao.modifierVoyage(v1);
 		System.out.println(v1);
-		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		System.out.println(verif);
 		assertEquals(verif, 1);
 	
@@ -83,9 +81,12 @@ public class VoyageDaoImplTest {
 	@Transactional
 	@Rollback(true)//Des que le test est terminé la base de donnée doit revenir à son état initial
 	public void testRechercherVoyage(){
+		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		Destination dest = new Destination("Europe", "Maroc");
 		Voyage v1 = new Voyage(1,10,null,null,300,true,dest,null,null);
+		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		voyageDao.ajouterVoyage(v1);
+		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		Voyage v2 = voyageDao.rechercherVoyage(v1);
 		
 		assertEquals(v1,v2);
