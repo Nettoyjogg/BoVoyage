@@ -184,6 +184,17 @@ public class VoyageController {
 
 	@RequestMapping(value = "/afficheRechercher", method = RequestMethod.GET)
 	public String afficheRec(Model model) {
+		List<Voyage> voyages = vService.afficherVoyages();
+		
+		model.addAttribute("listevoyage", voyages);
+		
+		List<Integer> ids = new ArrayList<Integer>();
+		
+		for (Voyage voy : voyages) {
+			ids.add(voy.getIdVoyage());
+		}
+		
+		model.addAttribute("listeId",ids);
 		// lier le voyage au mvc pour le formulaire
 		model.addAttribute("vRec", new Voyage());
 		return "recherche_voyage";
@@ -196,18 +207,6 @@ public class VoyageController {
 
 		if (vOut != null) {
 			ModelAndView Modele1 = new ModelAndView("recherche_voyage", "voyage", vOut);
-			
-			List<Voyage> voyages = vService.afficherVoyages();
-			
-			Modele1.addObject("listevoyage", voyages);
-			
-			List<Integer> ids = new ArrayList<Integer>();
-			
-			for (Voyage voy : voyages) {
-				ids.add(voy.getIdVoyage());
-			}
-			
-			Modele1.addObject("listeId",ids);
 			
 			return Modele1;
 		} else {
