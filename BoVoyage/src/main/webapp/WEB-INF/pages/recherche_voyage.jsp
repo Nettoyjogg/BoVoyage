@@ -22,8 +22,8 @@
 		<div class="form-group">
 			<label for="idV" class="col-sm-2 control-label">Id du Voyage</label>
 			<div class="col-sm-3">
-				<form:input cssClass="form-control" id="idV"
-					path="idVoyage" type="number" />
+			<form:select path="idVoyage" cssClass="form-control" id="idV" placeholder="Formule" items="${listeId}"></form:select>
+
 			</div>
 		</div>
 		

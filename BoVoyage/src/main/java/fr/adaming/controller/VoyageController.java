@@ -183,7 +183,19 @@ public class VoyageController {
 
 		if (vOut != null) {
 			ModelAndView Modele1 = new ModelAndView("recherche_voyage", "voyage", vOut);
-			Modele1.addObject("listevoyage", vService.afficherVoyages());
+			
+			List<Voyage> voyages = vService.afficherVoyages();
+			
+			Modele1.addObject("listevoyage", voyages);
+			
+			List<Integer> ids = new ArrayList<Integer>();
+			
+			for (Voyage voy : voyages) {
+				ids.add(voy.getIdVoyage());
+			}
+			
+			Modele1.addObject("listeId",ids);
+			
 			return Modele1;
 		} else {
 			ra.addFlashAttribute("msg", "Le voyage que vous recherchez n'existe pas");
