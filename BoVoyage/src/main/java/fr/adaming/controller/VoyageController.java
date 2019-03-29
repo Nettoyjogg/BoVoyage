@@ -2,6 +2,7 @@ package fr.adaming.controller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.model.Destination;
-import fr.adaming.model.Voiture;
 import fr.adaming.model.Voyage;
 import fr.adaming.service.IVoyageService;
 
@@ -49,7 +49,17 @@ public class VoyageController {
 
 	@RequestMapping(value = "/liste", method = RequestMethod.GET)
 	public ModelAndView afficherVoyage() {
-		return new ModelAndView("accueil", "liste", vService.afficherVoyages());
+
+		List<Voyage> lOut = new ArrayList<Voyage>();
+		int a = vService.afficherVoyages().size();
+		for (int i = 0; i<a ; i++) {
+			if (vService.afficherVoyages().get(i).isStatut()) {
+				lOut.add(vService.afficherVoyages().get(i));
+			}
+
+		}
+
+		return new ModelAndView("accueil", "liste", lOut);
 	}
 
 	// ========================ajout d'un voyage================
@@ -61,10 +71,10 @@ public class VoyageController {
 		return "ajout_voyage";
 	}
 
-	@RequestMapping(value = "/soumettreAjouter", method = RequestMethod.POST)
+	@RequestMapping(value = "/soumettreAjouterVoyage", method = RequestMethod.POST)
 	public String soumettreAjout(@ModelAttribute("vAjout") Voyage v, RedirectAttributes ra) {
 		// appel methode service
-		v.setStatut(true);
+		
 		Voyage vOut = vService.ajouterVoyage(v);
 
 		if (vOut.getIdVoyage() != 0) {
@@ -109,16 +119,20 @@ public class VoyageController {
 	@RequestMapping(value = "/soumettreClore", method = RequestMethod.POST)
 	public String soumettreClore(@ModelAttribute("vClot") Voyage v, RedirectAttributes ra) {
 		// appel methode service
-		int verif = vService.cloreVoyage(v);
+		
+		Voyage vOut = vService.rechercherVoyage(v);
+		if (vOut != null) {
+		vOut.setStatut(false);
+		vService.modifierVoyage(vOut);
 
-		if (verif != 0) {
+		
 			return "redirect:liste";
 		} else {
-			ra.addFlashAttribute("msg", "echec de la cloture");
+			ra.addFlashAttribute("msg", "echec de la cloture, le voyage n'existe pas");
 			return "redirect:afficheClore";
 		}
+	
 	}
-
 	// ====================rechercher un voyage================
 
 	@RequestMapping(value = "/afficheRechercher", method = RequestMethod.GET)
@@ -134,18 +148,18 @@ public class VoyageController {
 		Voyage vOut = vService.rechercherVoyage(v);
 
 		if (vOut != null) {
-			return new ModelAndView("rechercher_voyage","voyage",vOut);
+			return new ModelAndView("rechercher_voyage", "voyage", vOut);
 		} else {
 			ra.addFlashAttribute("msg", "Le voyage que vous recherchez n'existe pas");
 			return new ModelAndView("rechercher_voyage");
 		}
 	}
-	
-	
-	// ==================== actualiser la liste des voyages en specifiant une destination, des dates, des prix================
-	
-	//destination
-	
+
+	// ==================== actualiser la liste des voyages en specifiant une
+	// destination, des dates, des prix================
+
+	// destination
+
 	@RequestMapping(value = "/afficheDestination", method = RequestMethod.GET)
 	public String afficheDest(Model model) {
 		// lier le voyage au mvc pour le formulaire
@@ -161,13 +175,14 @@ public class VoyageController {
 		if (lOut != null) {
 			return new ModelAndView("accueil", "liste", lOut);
 		} else {
-			ra.addFlashAttribute("msg", "Il n'y a pas de voyage prévu pour la destination que vous recherchez actuellement, revenez plus tard");
+			ra.addFlashAttribute("msg",
+					"Il n'y a pas de voyage prévu pour la destination que vous recherchez actuellement, revenez plus tard");
 			return new ModelAndView("accueil");
 		}
 	}
-	
-	//dates
-	
+
+	// dates
+
 	@RequestMapping(value = "/afficheDate", method = RequestMethod.GET)
 	public String afficheDate(Model model) {
 		// lier le voyage au mvc pour le formulaire
@@ -183,36 +198,35 @@ public class VoyageController {
 		if (lOut != null) {
 			return new ModelAndView("accueil", "liste", lOut);
 		} else {
-			ra.addFlashAttribute("msg", "Il n'y a pas de voyage prévu pour les dates que vous recherchez actuellement, revenez plus tard");
+			ra.addFlashAttribute("msg",
+					"Il n'y a pas de voyage prévu pour les dates que vous recherchez actuellement, revenez plus tard");
+			return new ModelAndView("accueil");
+		}
+	}
+
+	// prix
+
+	@RequestMapping(value = "/affichePrix", method = RequestMethod.GET)
+	public String affichePrix(Model model) {
+		// lier le voyage au mvc pour le formulaire
+		model.addAttribute("vPrix", new Voyage());
+		return "prix_voyage";
+	}
+
+	@RequestMapping(value = "/soumettrePrix", method = RequestMethod.POST)
+	public ModelAndView soumettrePrix(@ModelAttribute("vPrix") double min, double max, RedirectAttributes ra) {
+		// appel methode service
+		List<Voyage> lOut = vService.rechercherPrix(min, max);
+
+		if (lOut != null) {
+			return new ModelAndView("accueil", "liste", lOut);
+		} else {
+			ra.addFlashAttribute("msg",
+					"Il n'y a pas de voyage prévu dans la tranche de prix que vous recherchez actuellement, revenez plus tard");
 			return new ModelAndView("accueil");
 		}
 	}
 	
-	
-	//prix
-	
-		@RequestMapping(value = "/affichePrix", method = RequestMethod.GET)
-		public String affichePrix(Model model) {
-			// lier le voyage au mvc pour le formulaire
-			model.addAttribute("vPrix", new Voyage());
-			return "prix_voyage";
-		}
-
-		@RequestMapping(value = "/soumettrePrix", method = RequestMethod.POST)
-		public ModelAndView soumettrePrix(@ModelAttribute("vPrix") double min, double max, RedirectAttributes ra) {
-			// appel methode service
-			List<Voyage> lOut = vService.rechercherPrix(min, max);
-
-			if (lOut != null) {
-				return new ModelAndView("accueil", "liste", lOut);
-			} else {
-				ra.addFlashAttribute("msg", "Il n'y a pas de voyage prévu dans la tranche de prix que vous recherchez actuellement, revenez plus tard");
-				return new ModelAndView("accueil");
-			}
-		}
-	
-	
-	
-	
-
 }
+
+

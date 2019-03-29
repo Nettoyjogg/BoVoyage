@@ -30,25 +30,17 @@ public class VoyageServiceImpl implements IVoyageService {
 
 	@Override
 	public Voyage ajouterVoyage(Voyage v) {
-		// TODO Auto-generated method stub
 		return voyageDao.ajouterVoyage(v);
 	}
 
 	@Override
 	public int modifierVoyage(Voyage v) {
-		// TODO Auto-generated method stub
 		return voyageDao.modifierVoyage(v);
 	}
 
-	@Override
-	public int cloreVoyage(Voyage v) {
-		// TODO Auto-generated method stub
-		return voyageDao.cloreVoyage(v);
-	}
 
 	@Override
 	public Voyage rechercherVoyage(Voyage v) {
-		// TODO Auto-generated method stub
 		return voyageDao.rechercherVoyage(v);
 	}
 

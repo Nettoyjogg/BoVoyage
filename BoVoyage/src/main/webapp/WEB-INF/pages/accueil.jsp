@@ -33,7 +33,7 @@
 <c:forEach items="${liste}" var="v">
 <tr>
 <td>${v.prix}</td>
-<td>${v.pays}</td>
+<td>${v.destination.pays}</td>
 <td>${v.placesLibres}</td>
 </tr>
 

@@ -6,22 +6,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<script type="text/javascript" src="assets/js/main.js"></script>
-		<link rel="stylesheet" href="assets/css/styleLogin.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">		
+		<link rel="stylesheet" href="assets/css/style.css" />
 		<title>login</title>
 	</head>
 		
 	<body>
 		<div class="login-page">
-			  <div class="form">
-			    <form class="register-form">
-			      <input type="text" placeholder="nom" name=""/>
-			      <input type="password" placeholder="mot de passe" name=""/>
-			      <input type="text" placeholder=" addresse email" name=""/>
-			      <button type="submit"><a href="">créer</a></button>
-			      <p class="message">Déja enregistré(e)? <a href="${pageContext.request.contextPath}/login/loginUrl">Se connecter</a></p>
-			    </form>
+<!-- 			  <div class="form"> -->
+<!-- 			    <form class="register-form"> -->
+<!-- 			      <input type="text" placeholder="nom" name=""/> -->
+<!-- 			      <input type="password" placeholder="mot de passe" name=""/> -->
+<!-- 			      <input type="text" placeholder=" addresse email" name=""/> -->
+<!-- 			      <button type="submit"><a href="">créer</a></button> -->
+<%-- 			      <p class="message">Déja enregistré(e)? <a href="${pageContext.request.contextPath}/login/loginUrl">Se connecter</a></p> --%>
+<!-- 			    </form> -->
 			    
 			<form class="fondForm" method="post" action="connexion">
 					<input type="text" placeholder="identifiant" name="j_username" /> </br></br>

@@ -14,8 +14,6 @@ public interface IVoyageService {
 
 	public int modifierVoyage(Voyage v);
 
-	public int cloreVoyage(Voyage v);
-
 	public Voyage rechercherVoyage(Voyage v);
 
 	public List<Voyage> rechercherDestination(Destination d);

@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<form:form method="POST" action="soumettreAjouter" commandName="vAjout"
+<form:form method="POST" action="soumettreAjouterVoyage" commandName="vAjout"
 		cssClass="form-horizontal">
 
 		<div class="form-group">
@@ -24,6 +24,14 @@
 			<div class="col-sm-3">
 				<form:input cssClass="form-control" id="idPlace"
 					path="placesLibres" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="idPrix" class="col-sm-2 control-label">Prix</label>
+			<div class="col-sm-3">
+				<form:input cssClass="form-control" id="idPrix"
+					path="prix" />
 			</div>
 		</div>
 
@@ -58,6 +66,8 @@
 					path="destination.pays" placeholder="Pays"/>
 			</div>
 		</div>
+		
+	
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">

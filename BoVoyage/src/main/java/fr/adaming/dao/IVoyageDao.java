@@ -14,7 +14,6 @@ public interface IVoyageDao {
 
 	public int modifierVoyage(Voyage v);
 
-	public int cloreVoyage(Voyage v);
 
 	public Voyage rechercherVoyage(Voyage v);
 
