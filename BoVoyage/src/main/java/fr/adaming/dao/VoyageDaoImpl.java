@@ -45,7 +45,7 @@ public class VoyageDaoImpl implements IVoyageDao {
 		// recupération du bus
 		Session s = sf.getCurrentSession();
 		v.setStatut(true);
-		s.persist(v);
+		s.save(v);
 		return v;
 	}
 
