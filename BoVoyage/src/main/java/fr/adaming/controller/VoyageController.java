@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.adaming.model.Destination;
@@ -94,7 +95,7 @@ public class VoyageController {
 		return "modification_voyage";
 	}
 
-	@RequestMapping(value = "/soumettreModifier", method = RequestMethod.POST)
+	@RequestMapping(value = "/soumettreModifierVoyage", method = RequestMethod.POST)
 	public String soumettreModif(@ModelAttribute("vModif") Voyage v, RedirectAttributes ra) {
 		// appel methode service
 		int verif = vService.modifierVoyage(v);
@@ -133,6 +134,35 @@ public class VoyageController {
 		}
 	
 	}
+	
+	// ========================Supprimer un voyage================
+
+	@RequestMapping(value = "/afficheSupprime", method = RequestMethod.GET)
+	public String afficheSupprim(Model model) {
+		// lier le voyage au mvc pour le formulaire
+		model.addAttribute("vSuppr", new Voyage());
+		return "supprimer_voyage";
+	}
+
+	@RequestMapping(value = "/soumettreSupprimerVoyage", method = RequestMethod.POST)
+	public String soumettreSupprim(@ModelAttribute("vSuppr") Voyage v, RedirectAttributes ra) {
+		// appel methode service
+		
+		Voyage vOut = vService.rechercherVoyage(v);
+		if (vOut != null) {
+		vService.supprimerVoyage(v);
+
+		
+			return "redirect:liste";
+		} else {
+			ra.addFlashAttribute("msg", "echec de la suppression, le voyage n'existe pas");
+			return "redirect:afficheSupprime";
+		}
+	
+	}
+	
+	
+	
 	// ====================rechercher un voyage================
 
 	@RequestMapping(value = "/afficheRechercher", method = RequestMethod.GET)
@@ -142,19 +172,40 @@ public class VoyageController {
 		return "recherche_voyage";
 	}
 
-	@RequestMapping(value = "/soumettreRechercher", method = RequestMethod.POST)
+	@RequestMapping(value = "/soumettreRechercherVoyage", method = RequestMethod.POST)
 	public ModelAndView soumettreRec(@ModelAttribute("vRec") Voyage v, RedirectAttributes ra) {
 		// appel methode service
 		Voyage vOut = vService.rechercherVoyage(v);
 
 		if (vOut != null) {
-			return new ModelAndView("rechercher_voyage", "voyage", vOut);
+			ModelAndView Modele1 = new ModelAndView("recherche_voyage", "voyage", vOut);
+			Modele1.addObject("listevoyage", vService.afficherVoyages());
+			return Modele1;
 		} else {
 			ra.addFlashAttribute("msg", "Le voyage que vous recherchez n'existe pas");
-			return new ModelAndView("rechercher_voyage");
+			return new ModelAndView("recherche_voyage");
 		}
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// ==================== actualiser la liste des voyages en specifiant une
 	// destination, des dates, des prix================
 

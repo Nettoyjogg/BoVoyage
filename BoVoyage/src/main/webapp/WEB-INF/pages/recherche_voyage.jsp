@@ -11,12 +11,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Cloture</title>
+<title>Rechercher</title>
 <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap.css'/>" />
 </head>
 <body>
 
-<form:form method="POST" action="soumettreClore" commandName="vClot"
+<form:form method="POST" action="soumettreRechercherVoyage" commandName="vRec"
 		cssClass="form-horizontal">
 
 		<div class="form-group">
@@ -31,12 +31,38 @@
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Clore</button>
+				<button type="submit" class="btn btn-default">Rechercher</button>
 			</div>
 		</div>
 	</form:form>
 	
 	<h1>${msg}</h1>
+
+
+<h1 style="color:blue; text-align: center;">liste des voyages</h1>
+
+<table class="table table-striped">
+<tr>
+
+<th>Prix </th>
+<th>Pays de destination</th>
+<th>places libres</th>
+
+</tr>
+
+
+<tr>
+<td>${voyage.prix}</td>
+<td>${voyage.destination.pays}</td>
+<td>${voyage.placesLibres}</td>
+</tr>
+
+
+
+
+
+</table>
+
 
 </body>
 </html>

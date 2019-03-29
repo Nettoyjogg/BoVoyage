@@ -146,4 +146,17 @@ public class VoyageDaoImpl implements IVoyageDao {
 		return listeV;
 	}
 
+	@Override
+	public int supprimerVoyage(Voyage v) {
+		Session s=sf.getCurrentSession();
+		String req = "DELETE Voyage as v  WHERE v.idVoyage=:pId";
+		
+		//Récupérer un objet de type Query
+		Query query=s.createQuery(req);		
+		
+		//Passage des paramètres
+		query.setParameter("pId", v.getIdVoyage());
+		return query.executeUpdate();
+	}
+
 }
