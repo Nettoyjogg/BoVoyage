@@ -94,7 +94,7 @@ public class VoyageController {
 		return "modification_voyage";
 	}
 
-	@RequestMapping(value = "/soumettreModifier", method = RequestMethod.POST)
+	@RequestMapping(value = "/soumettreModifierVoyage", method = RequestMethod.POST)
 	public String soumettreModif(@ModelAttribute("vModif") Voyage v, RedirectAttributes ra) {
 		// appel methode service
 		int verif = vService.modifierVoyage(v);
@@ -162,15 +162,6 @@ public class VoyageController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	// ====================rechercher un voyage================
 
 	@RequestMapping(value = "/afficheRechercher", method = RequestMethod.GET)
@@ -180,19 +171,38 @@ public class VoyageController {
 		return "recherche_voyage";
 	}
 
-	@RequestMapping(value = "/soumettreRechercher", method = RequestMethod.POST)
+	@RequestMapping(value = "/soumettreRechercherVoyage", method = RequestMethod.POST)
 	public ModelAndView soumettreRec(@ModelAttribute("vRec") Voyage v, RedirectAttributes ra) {
 		// appel methode service
 		Voyage vOut = vService.rechercherVoyage(v);
 
 		if (vOut != null) {
-			return new ModelAndView("rechercher_voyage", "voyage", vOut);
+			return new ModelAndView("recherche_voyage", "voyage", vOut);
 		} else {
 			ra.addFlashAttribute("msg", "Le voyage que vous recherchez n'existe pas");
-			return new ModelAndView("rechercher_voyage");
+			return new ModelAndView("recherche_voyage");
 		}
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// ==================== actualiser la liste des voyages en specifiant une
 	// destination, des dates, des prix================
 

@@ -60,6 +60,61 @@ public class VoyageServiceImplTest {
 	
 	}
 	
-
+	//=====================Test Modifier Voyage
+			//Vérifier que la modification s'effectue bien avec le bon nombre d'itération
+		@Test
+		@Transactional
+		@Rollback(true)//Des que le test est terminé la base de donnée doit revenir à son état initial
+		public void testModifierVoyage(){
+			Destination dest = new Destination("Europe", "Maroc");
+			Voyage v1 = new Voyage(10,null,null,300,true,dest,null,null);
+			System.out.println("-------------------------------------------------------------------------------------------------------------");
+			System.out.println(v1);
+			vService.ajouterVoyage(v1);
+			v1.setPrix(400);
+			int verif=vService.modifierVoyage(v1);
+			System.out.println(v1);
+			System.out.println("-------------------------------------------------------------------------------------------------------------");
+			System.out.println(verif);
+			assertEquals(verif, 1);
+		
+		}
+		//=====================Test Rechercher Voyage
+		//Vérifier que le voyage recherché est le bon
+		@Test
+		@Transactional
+		@Rollback(true)//Des que le test est terminé la base de donnée doit revenir à son état initial
+		public void testRechercherVoyage(){
+			Destination dest = new Destination("Europe", "Maroc");
+			Voyage v1 = new Voyage(1,10,null,null,300,true,dest,null,null);
+			vService.ajouterVoyage(v1);
+			Voyage v2 = vService.rechercherVoyage(v1);
+			
+			assertEquals(v1,v2);
+		
+		}
+		
+		
+		//=====================Test Supprimer Voyage
+		//Vérifier qu'un voyage est bien supprimé de la base de donnée
+		@Test
+		@Transactional
+		@Rollback(true)//Des que le test est terminé la base de donnée doit revenir à son état initial
+		public void testSupprimerVoyage(){
+			Destination dest = new Destination("Europe", "Maroc");
+			Voyage v1 = new Voyage(20,10,null,null,300,true,dest,null,null);
+			vService.ajouterVoyage(v1);
+			int tailleavant=vService.afficherVoyages().size();
+			System.out.println("-------------------------------------------------------------------------");
+			System.out.println(vService.afficherVoyages().size());
+			vService.supprimerVoyage(v1);
+			System.out.println(vService.afficherVoyages().size());
+			System.out.println("--------------------------------------------------------------------------");
+			int tailleaprès=vService.afficherVoyages().size();
+			assertEquals(tailleavant-1,tailleaprès);
+		
+		}
+	
+	
 	
 }
