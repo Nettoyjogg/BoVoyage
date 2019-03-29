@@ -26,14 +26,25 @@ public class Formule implements Serializable{
 		super();
 	}
 
-	public Formule(String avion, Hotel hotel, Voiture voiture) {
+	public Formule(String nomFormule, String avion, Hotel hotel, Voiture voiture) {
 		super();
+		this.nomFormule = nomFormule;
 		this.avion = avion;
 		this.hotel = hotel;
 		this.voiture = voiture;
 	}
 
 	// déclaration des getters et setters
+	
+	public String getNomFormule() {
+		return nomFormule;
+	}
+
+	public void setNomFormule(String nomFormule) {
+		this.nomFormule = nomFormule;
+	}
+	
+	
 	public String getAvion() {
 		return avion;
 	}

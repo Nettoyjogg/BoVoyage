@@ -45,7 +45,7 @@ public class Hotel implements Serializable{
 	//To string
 	@Override
 	public String toString() {
-		return "Hotel [nomH=" + nomH + ", nombreEtoile=" + nombreEtoile + "]";
+		return nomH + " " + nombreEtoile + " étoiles";
 	}
 
 	

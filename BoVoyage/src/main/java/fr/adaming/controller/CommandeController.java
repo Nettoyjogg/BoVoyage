@@ -2,7 +2,9 @@ package fr.adaming.controller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -20,6 +22,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import fr.adaming.model.Client;
 import fr.adaming.model.Commande;
 import fr.adaming.model.Conseiller;
+import fr.adaming.model.Formule;
+import fr.adaming.model.Hotel;
+import fr.adaming.model.PrestationHebergement;
 import fr.adaming.service.IClientService;
 import fr.adaming.service.ICommandeService;
 import fr.adaming.service.IConseillerService;
@@ -96,6 +101,66 @@ public class CommandeController {
 		public String afficheModif(Model modele){
 			//lier une commande au modèle MVC afin de l'utiliser dans le formulaire
 			modele.addAttribute("comModif",new Commande());
+			
+			// ajout des formules proposées
+			List<Formule> formules = new ArrayList<Formule>();
+			
+			Formule f1 = new Formule();
+			f1.setNomFormule("Avion");
+			formules.add(f1);
+			
+			Formule f2 = new Formule();
+			f2.setNomFormule("Hotel");
+			formules.add(f2);
+			
+			Formule f3 = new Formule();
+			f3.setNomFormule("AvionHotel");
+			formules.add(f3);
+			
+			Formule f4 = new Formule();
+			f4.setNomFormule("AvionVoiture");
+			formules.add(f4);
+			
+			Formule f5 = new Formule();
+			f5.setNomFormule("AvionHotelVoiture");
+			formules.add(f5);
+
+			modele.addAttribute("formules", formules);
+			
+			
+			// ajout des prestations proposées
+			List<Hotel> hotels = new ArrayList<Hotel>();
+
+			Hotel h1 = new Hotel("Hôtel mondial",2);
+			hotels.add(h1);
+
+			Hotel h2 = new Hotel("Hôtel mondial",3);
+			hotels.add(h2);
+			
+			modele.addAttribute("hotels",hotels);
+			
+			
+			// ajout des prestations proposées
+			List<PrestationHebergement> prestations = new ArrayList<PrestationHebergement>();
+			
+			PrestationHebergement p1 = new PrestationHebergement();
+			p1.setType("Hébergement seul");
+			prestations.add(p1);
+			
+			PrestationHebergement p2 = new PrestationHebergement();
+			p2.setType("Petit déjeuner");
+			prestations.add(p2);
+			
+			PrestationHebergement p3 = new PrestationHebergement();
+			p3.setType("Demi-pension");
+			prestations.add(p3);
+			
+			PrestationHebergement p4 = new PrestationHebergement();
+			p4.setType("Pension complète");
+			prestations.add(p4);
+			
+			modele.addAttribute("prestations",prestations);
+			
 			return "modif_commande";
 		}
 		
