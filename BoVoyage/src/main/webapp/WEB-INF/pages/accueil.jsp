@@ -26,7 +26,8 @@
 
 <th>Prix </th>
 <th>Pays de destination</th>
-<th>places libres</th>
+<th>Places libres</th>
+<th>Photo</th>
 
 </tr>
 
@@ -35,6 +36,7 @@
 <td>${v.prix}</td>
 <td>${v.destination.pays}</td>
 <td>${v.placesLibres}</td>
+<td><img src="photoVoyage?idVoyage=${v.idVoyage}"/></td>
 </tr>
 
 </c:forEach>
