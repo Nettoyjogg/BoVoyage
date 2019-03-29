@@ -62,4 +62,10 @@ public class VoyageServiceImpl implements IVoyageService {
 		return voyageDao.rechercherDate(depart, retour);
 	}
 
+	@Override
+	public int supprimerVoyage(Voyage v) {
+		
+		return voyageDao.supprimerVoyage(v);
+	}
+
 }

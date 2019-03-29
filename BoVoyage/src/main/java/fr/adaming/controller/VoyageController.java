@@ -133,6 +133,44 @@ public class VoyageController {
 		}
 	
 	}
+	
+	// ========================Supprimer un voyage================
+
+	@RequestMapping(value = "/afficheSupprime", method = RequestMethod.GET)
+	public String afficheSupprim(Model model) {
+		// lier le voyage au mvc pour le formulaire
+		model.addAttribute("vSuppr", new Voyage());
+		return "supprimer_voyage";
+	}
+
+	@RequestMapping(value = "/soumettreSupprimerVoyage", method = RequestMethod.POST)
+	public String soumettreSupprim(@ModelAttribute("vSuppr") Voyage v, RedirectAttributes ra) {
+		// appel methode service
+		
+		Voyage vOut = vService.rechercherVoyage(v);
+		if (vOut != null) {
+		vService.supprimerVoyage(v);
+
+		
+			return "redirect:liste";
+		} else {
+			ra.addFlashAttribute("msg", "echec de la suppression, le voyage n'existe pas");
+			return "redirect:afficheSupprime";
+		}
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// ====================rechercher un voyage================
 
 	@RequestMapping(value = "/afficheRechercher", method = RequestMethod.GET)

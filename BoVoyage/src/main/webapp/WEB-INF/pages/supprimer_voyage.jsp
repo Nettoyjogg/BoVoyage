@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<form:form method="POST" action="soumettreClore" commandName="vClot"
+<form:form method="POST" action="soumettreSupprimerVoyage" commandName="vSuppr"
 		cssClass="form-horizontal">
 
 		<div class="form-group">
@@ -31,7 +31,7 @@
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Clore</button>
+				<button type="submit" class="btn btn-default">Supprimer</button>
 			</div>
 		</div>
 	</form:form>

@@ -1,6 +1,7 @@
 package fr.adaming.daoTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -76,8 +77,8 @@ public class VoyageDaoImplTest {
 		assertEquals(verif, 1);
 	
 	}
-	//=====================Test Ajout Voyage
-	//Vérifier que le voyage est bien ajouté à la liste des voyages
+	//=====================Test Rechercher Voyage
+	//Vérifier que le voyage recherché est le bon
 	@Test
 	@Transactional
 	@Rollback(true)//Des que le test est terminé la base de donnée doit revenir à son état initial
@@ -88,6 +89,27 @@ public class VoyageDaoImplTest {
 		Voyage v2 = voyageDao.rechercherVoyage(v1);
 		
 		assertEquals(v1,v2);
+	
+	}
+	
+	
+	//=====================Test Supprimer Voyage
+	//Vérifier qu'un voyage est bien supprimé de la base de donnée
+	@Test
+	@Transactional
+	@Rollback(true)//Des que le test est terminé la base de donnée doit revenir à son état initial
+	public void testSupprimerVoyage(){
+		Destination dest = new Destination("Europe", "Maroc");
+		Voyage v1 = new Voyage(20,10,null,null,300,true,dest,null,null);
+		voyageDao.ajouterVoyage(v1);
+		int tailleavant=voyageDao.afficherVoyages().size();
+		System.out.println("-------------------------------------------------------------------------");
+		System.out.println(voyageDao.afficherVoyages().size());
+		voyageDao.supprimerVoyage(v1);
+		System.out.println(voyageDao.afficherVoyages().size());
+		System.out.println("--------------------------------------------------------------------------");
+		int tailleaprès=voyageDao.afficherVoyages().size();
+		assertEquals(tailleavant-1,tailleaprès);
 	
 	}
 	

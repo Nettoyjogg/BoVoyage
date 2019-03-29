@@ -13,6 +13,8 @@ public interface IVoyageService {
 	public Voyage ajouterVoyage(Voyage v);
 
 	public int modifierVoyage(Voyage v);
+	
+	public int supprimerVoyage(Voyage v);
 
 	public Voyage rechercherVoyage(Voyage v);
 
