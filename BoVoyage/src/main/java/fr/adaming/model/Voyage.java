@@ -92,6 +92,7 @@ public class Voyage implements Serializable {
 	}
 
 	// Déclaration des getters et setters
+
 	public int getIdVoyage() {
 		return idVoyage;
 	}
@@ -164,14 +165,6 @@ public class Voyage implements Serializable {
 		this.img = img;
 	}
 
-	public BoVoyage getBoVoyage() {
-		return boVoyage;
-	}
-
-	public void setBoVoyage(BoVoyage boVoyage) {
-		this.boVoyage = boVoyage;
-	}
-
 	public List<Commande> getListeCommande() {
 		return listeCommande;
 	}
@@ -180,7 +173,15 @@ public class Voyage implements Serializable {
 		this.listeCommande = listeCommande;
 	}
 
-	// To string
+	public BoVoyage getBoVoyage() {
+		return boVoyage;
+	}
+
+	public void setBoVoyage(BoVoyage boVoyage) {
+		this.boVoyage = boVoyage;
+	}
+
+	//To string
 	@Override
 	public String toString() {
 		return "Voyage [idVoyage=" + idVoyage + ", placesLibres=" + placesLibres + ", dateDepart=" + dateDepart
@@ -188,5 +189,9 @@ public class Voyage implements Serializable {
 				+ destination + ", photo=" + Arrays.toString(photo) + ", img=" + img + ", listeCommande="
 				+ listeCommande + ", boVoyage=" + boVoyage + "]";
 	}
+	
+	
+	
+	
 
 }

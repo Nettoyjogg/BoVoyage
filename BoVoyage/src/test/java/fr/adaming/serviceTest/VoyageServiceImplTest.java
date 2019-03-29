@@ -25,17 +25,6 @@ public class VoyageServiceImplTest {
 	private IVoyageService vService;
 	
 	
-	// ==================TEST LISTES VOYAGES
-	//Vérifier la taille de la liste retournée
-	@Test
-	@Transactional(readOnly=true)
-	public void testListeVoyage(){
-		int tailleTheo=1;
-		//récupéerer la taille de la liste
-		int taillerelle=vService.afficherVoyages().size();
-		
-		assertEquals(tailleTheo, taillerelle);
-	}
 	
 	//=====================Test Ajout Voyage
 	//Vérifier que le voyage est bien ajouté à la liste des voyages

@@ -22,20 +22,7 @@ public class VoyageDaoImplTest {
 	
 	@Autowired
 	private IVoyageDao voyageDao;
-	
-	
-	// ==================TEST LISTES VOYAGES
-	//Vérifier la taille de la liste retournée
-	@Test
-	@Transactional(readOnly=true)
-	public void testListeVoyage(){
-		int tailleTheo=1;
-		//récupéerer la taille de la liste
-		int taillerelle=voyageDao.afficherVoyages().size();
 		
-		assertEquals(tailleTheo, taillerelle);
-	}
-	
 	//=====================Test Ajout Voyage
 	//Vérifier que le voyage est bien ajouté à la liste des voyages
 	@Test
@@ -70,6 +57,38 @@ public class VoyageDaoImplTest {
 	
 	}
 	
-
+	//=====================Test Modifier Voyage
+		//Vérifier que la modification s'effectue bien avec le bon nombre d'itération
+	@Test
+	@Transactional
+	@Rollback(true)//Des que le test est terminé la base de donnée doit revenir à son état initial
+	public void testModifierVoyage(){
+		Destination dest = new Destination("Europe", "Maroc");
+		Voyage v1 = new Voyage(10,null,null,300,true,dest,null,null);
+		System.out.println("-------------------------------------------------------------------------------------------------------------");
+		System.out.println(v1);
+		voyageDao.ajouterVoyage(v1);
+		v1.setPrix(400);
+		int verif=voyageDao.modifierVoyage(v1);
+		System.out.println(v1);
+		System.out.println("-------------------------------------------------------------------------------------------------------------");
+		System.out.println(verif);
+		assertEquals(verif, 1);
+	
+	}
+	//=====================Test Ajout Voyage
+	//Vérifier que le voyage est bien ajouté à la liste des voyages
+	@Test
+	@Transactional
+	@Rollback(true)//Des que le test est terminé la base de donnée doit revenir à son état initial
+	public void testRechercherVoyage(){
+		Destination dest = new Destination("Europe", "Maroc");
+		Voyage v1 = new Voyage(1,10,null,null,300,true,dest,null,null);
+		voyageDao.ajouterVoyage(v1);
+		Voyage v2 = voyageDao.rechercherVoyage(v1);
+		
+		assertEquals(v1,v2);
+	
+	}
 	
 }

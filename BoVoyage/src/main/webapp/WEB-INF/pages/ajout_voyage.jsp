@@ -17,7 +17,7 @@
 <body>
 
 <form:form method="POST" action="soumettreAjouterVoyage" commandName="vAjout"
-		cssClass="form-horizontal" enctype="multipart/form-data">
+		cssClass="form-horizontal">
 
 		<div class="form-group">
 			<label for="idPlace" class="col-sm-2 control-label">Nombre de places</label>
