@@ -26,90 +26,47 @@
 <body>
 
 	<h1 style="color: white; text-align: center; font-weight:bold; text-transform: uppercase ;">Nouveau Client</h1>
-
-	<form:form cssClass="form-horizontal" method="POST"	action="soumettreAjouter" commandName="cAjout">
-		<div class="fondForm">
-			<div class="form-group">
-				<label for="idNom" class="col-sm-2 control-label" >Nom</label>
-				<div class="col-sm-8">
-					<form:input cssclass="form-control" path="nomClient" id="idNom"	placeholder="Nom" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="idPrenom" class="col-sm-2 control-label">Prenom</label>
-				<div class="col-sm-8">
-					<form:input cssclass="form-control" path="prenomClient"	id="idPrenom" placeholder="Prenom" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="idCivilite" class="col-sm-2 control-label">Civilite</label>
-				<div class="col-sm-8">
-					<form:radiobutton cssclass="form-control" path="civilite" id="idCivilite" value="M" />
-					Monsieur
-					<form:radiobutton cssclass="form-control" path="civilite"	id="idCivilite" value="Mme" />
-					Madame
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="idAdresse" class="col-sm-2 control-label">Adresse</label>
-				<div class="col-sm-8">
-					<form:input cssclass="form-control" path="adresse" id="idAdresse" placeholder="Adresse" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="idTelephone" class="col-sm-2 control-label">Telephone</label>
-				<div class="col-sm-8">
-					<form:input type="number" cssclass="form-control" path="telephone"	id="idTelephone" placeholder="Telephone" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="idDateNaissance" class="col-sm-2 control-label">Date de Naissance</label>
-				<div class="col-sm-8">
-					<form:input type="date" cssclass="form-control"	path="dateNaissance" id="idDateNaissance" placeholder="Date" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="idCarteB" class="col-sm-2 control-label">Numero	de carte bancaire</label>
-				<div class="col-sm-8">
-					<form:input type="number" cssclass="form-control" path="numCarteB"	id="idCarteB" placeholder="Numero de carte bancaire" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="idSolde" class="col-sm-2 control-label">Solde</label>
-				<div class="col-sm-8">
-					<form:input type="number" cssclass="form-control" path="Solde"	id="idSolde" placeholder="Votre solde" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="idMail" class="col-sm-2 control-label">Mail</label>
-				<div class="col-sm-8">
-					<form:input type="email" cssclass="form-control" path="mailClient"	id="idMail" placeholder="Mail" />
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="idMdp" class="col-sm-2 control-label">Mdp</label>
-				<div class="col-sm-8">
-					<form:input type="password" cssclass="form-control"	path="mdpClient" id="idMdp" placeholder="Mdp" />
-				</div>
-			</div>
-
-
-			<div class="form-group">				
-				<button type="submit" class="btn btn-secondary btn-lg btn-block">Ajouter</button>				
-			</div>
-		</div>
-	</form:form>
-
-
+			
+			<form class="fondForm" method="post" action="soumettreAjouter" commandName="cAjout">
+			<label for="idNom" style=" color: white;font-weight:bold; text-decoration:underline;">Nom:</label>
+					<input type="text" id="idNom" placeholder="Nom" path="nomClient" /> </br></br>
+					
+					<label for="idPrenom" style=" color: white;font-weight:bold; text-decoration:underline;">Prénom:</label>
+					<input type="text" id="idPrenom" placeholder="Prénom" path="prenomClient" />  </br></br>
+					
+					
+			
+				  <label for="idCivilite" style=" color: white;font-weight:bold; text-decoration:underline;">Civilite:</label>
+				  <div style=" color: white;">
+					Homme:
+				    <input type="radio" id="idCivilite" path="civilite"  name="contact" value="M">    
+					Femme:
+				    <input type="radio" id="idCivilite"  path="civilite"  name="contact" value="Mme">
+				      </br> 
+				  </div>
+					   
+					 <label for="idAdresse" style=" color: white;font-weight:bold; text-decoration:underline;">Adresse:</label>
+					<input type="text" path="adresse" id="idAdresse" placeholder="Adresse"/>  </br></br>		
+					
+					<label for="idTelephone" style=" color: white;font-weight:bold; text-decoration:underline;">Téléphone:</label>			
+					<input type="number" path="telephone" id="idTelephone" placeholder="Téléphone"/>  </br></br>
+					
+					<label for="idDateNaissance" style=" color: white;font-weight:bold; text-decoration:underline;">Date de naissance:</label>
+					<input type="date" path="dateNaissance" id="idDateNaissance" placeholder="Date de naissance"/>  </br></br>
+					
+					<label for="idCarteB" style=" color: white;font-weight:bold; text-decoration:underline;">Numéro de carte bancaire:</label>
+					<input type="number" path="numCarteB" id="idCarteB" placeholder="n° de carte bancaire"/>  </br></br>
+					
+					<label for="idSolde" style=" color: white;font-weight:bold; text-decoration:underline;">Solde:</label>
+					<input type="number" path="Solde" id="idSolde" placeholder="Votre solde"/>  </br></br>
+					
+					<label for="idMail" style=" color: white;font-weight:bold; text-decoration:underline;">Mail:</label>
+					<input type="email" path="mailClient" id="idMail" placeholder="Mail"/>  </br></br>
+					
+					<label for="idMdp" style=" color: white;font-weight:bold; text-decoration:underline;">Mot de passe:</label>
+					<input type="password" path="mdpClient" id="idMdp" placeholder="Mot de passe"/>  </br></br>
+					
+					<button class="bouttonConnexion" type="submit" > Ajouter </button>
 
 </body>
 </html>

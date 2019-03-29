@@ -3,7 +3,7 @@ package fr.adaming.dao;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.codec.binary.Base64;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -33,9 +33,9 @@ public class VoyageDaoImpl implements IVoyageDao {
 
 		List<Voyage> listeV = query.list();
 
-		for (Voyage v : listeV) {
-			v.setImg("data:image/png;base64," + Base64.encodeBase64String(v.getPhoto()));
-		}
+//		for (Voyage v : listeV) {
+//			v.setImg("data:image/png;base64," + Base64.encodeBase64String(v.getPhoto()));
+//		}
 
 		return listeV;
 	}
@@ -99,9 +99,9 @@ public class VoyageDaoImpl implements IVoyageDao {
 
 		List<Voyage> listeV = query.list();
 
-		for (Voyage v : listeV) {
-			v.setImg("data:image/png;base64," + Base64.encodeBase64String(v.getPhoto()));
-		}
+//		for (Voyage v : listeV) {
+//			v.setImg("data:image/png;base64," + Base64.encodeBase64String(v.getPhoto()));
+//		}
 
 		return listeV;
 	}
@@ -119,9 +119,9 @@ public class VoyageDaoImpl implements IVoyageDao {
 
 		List<Voyage> listeV = query.list();
 
-		for (Voyage v : listeV) {
-			v.setImg("data:image/png;base64," + Base64.encodeBase64String(v.getPhoto()));
-		}
+//		for (Voyage v : listeV) {
+//			v.setImg("data:image/png;base64," + Base64.encodeBase64String(v.getPhoto()));
+//		}
 
 		return listeV;
 	}
@@ -139,9 +139,9 @@ public class VoyageDaoImpl implements IVoyageDao {
 
 		List<Voyage> listeV = query.list();
 
-		for (Voyage v : listeV) {
-			v.setImg("data:image/png;base64," + Base64.encodeBase64String(v.getPhoto()));
-		}
+//		for (Voyage v : listeV) {
+//			v.setImg("data:image/png;base64," + Base64.encodeBase64String(v.getPhoto()));
+//		}
 
 		return listeV;
 	}

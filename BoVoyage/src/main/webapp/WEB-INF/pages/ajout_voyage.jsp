@@ -17,7 +17,7 @@
 <body>
 
 <form:form method="POST" action="soumettreAjouterVoyage" commandName="vAjout"
-		cssClass="form-horizontal">
+		cssClass="form-horizontal" enctype="multipart/form-data">
 
 		<div class="form-group">
 			<label for="idPlace" class="col-sm-2 control-label">Nombre de places</label>
@@ -67,7 +67,13 @@
 			</div>
 		</div>
 		
-	
+		<div class="form-group">
+			<label for="idPhot" class="col-sm-2 control-label">Photo</label>
+			<div class="col-sm-3">
+				<input id="idPhot" type="file" name="file"/>
+			</div>
+		</div>
+
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">

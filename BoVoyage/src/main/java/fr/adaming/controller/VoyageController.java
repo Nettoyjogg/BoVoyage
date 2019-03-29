@@ -1,13 +1,17 @@
 package fr.adaming.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -62,6 +68,15 @@ public class VoyageController {
 
 		return new ModelAndView("accueil", "liste", lOut);
 	}
+	
+	@RequestMapping(value="photoVoyage",produces=MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	public byte[] photoVoy(int idVoyage) throws IOException{
+		Voyage v=new Voyage();
+		v.setIdVoyage(idVoyage);
+		Voyage vOut =vService.rechercherVoyage(v);
+		return IOUtils.toByteArray(new ByteArrayInputStream(vOut.getPhoto()));
+	}
 
 	// ========================ajout d'un voyage================
 
@@ -73,8 +88,10 @@ public class VoyageController {
 	}
 
 	@RequestMapping(value = "/soumettreAjouterVoyage", method = RequestMethod.POST)
-	public String soumettreAjout(@ModelAttribute("vAjout") Voyage v, RedirectAttributes ra) {
+	public String soumettreAjout(@ModelAttribute("vAjout") Voyage v,MultipartFile file, RedirectAttributes ra) throws IOException {
 		// appel methode service
+		
+		if(!file.isEmpty()){v.setPhoto(file.getBytes());}
 		
 		Voyage vOut = vService.ajouterVoyage(v);
 
@@ -179,7 +196,19 @@ public class VoyageController {
 
 		if (vOut != null) {
 			ModelAndView Modele1 = new ModelAndView("recherche_voyage", "voyage", vOut);
-			Modele1.addObject("listevoyage", vService.afficherVoyages());
+			
+			List<Voyage> voyages = vService.afficherVoyages();
+			
+			Modele1.addObject("listevoyage", voyages);
+			
+			List<Integer> ids = new ArrayList<Integer>();
+			
+			for (Voyage voy : voyages) {
+				ids.add(voy.getIdVoyage());
+			}
+			
+			Modele1.addObject("listeId",ids);
+			
 			return Modele1;
 		} else {
 			ra.addFlashAttribute("msg", "Le voyage que vous recherchez n'existe pas");
