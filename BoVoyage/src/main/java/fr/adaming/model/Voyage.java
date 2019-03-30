@@ -181,14 +181,15 @@ public class Voyage implements Serializable {
 		this.boVoyage = boVoyage;
 	}
 
-	//To string
 	@Override
 	public String toString() {
 		return "Voyage [idVoyage=" + idVoyage + ", placesLibres=" + placesLibres + ", dateDepart=" + dateDepart
 				+ ", dateRetour=" + dateRetour + ", prix=" + prix + ", statut=" + statut + ", destination="
-				+ destination + ", photo=" + Arrays.toString(photo) + ", img=" + img + ", listeCommande="
-				+ listeCommande + ", boVoyage=" + boVoyage + "]";
+				+ destination + ", photo=" + Arrays.toString(photo) + ", img=" + img + "]";
 	}
+
+	//To string
+
 	
 	
 	

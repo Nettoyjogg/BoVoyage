@@ -189,12 +189,16 @@ public class VoyageController {
 		model.addAttribute("listevoyage", voyages);
 		
 		List<Integer> ids = new ArrayList<Integer>();
+		List<Destination> idest = new ArrayList<Destination>();
 		
 		for (Voyage voy : voyages) {
 			ids.add(voy.getIdVoyage());
+			idest.add(voy.getDestination());
 		}
 		
 		model.addAttribute("listeId",ids);
+		model.addAttribute("listeDest",idest);
+		
 		// lier le voyage au mvc pour le formulaire
 		model.addAttribute("vRec", new Voyage());
 		return "recherche_voyage";
