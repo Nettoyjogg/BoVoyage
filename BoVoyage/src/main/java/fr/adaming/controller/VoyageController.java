@@ -190,14 +190,23 @@ public class VoyageController {
 		
 		List<Integer> ids = new ArrayList<Integer>();
 		List<Destination> idest = new ArrayList<Destination>();
+		List<Voyage> testlist = new ArrayList<Voyage>();
 		
 		for (Voyage voy : voyages) {
 			ids.add(voy.getIdVoyage());
 			idest.add(voy.getDestination());
+
+			Voyage e = new Voyage();
+			e.setIdVoyage(voy.getIdVoyage());
+			e.setDestination(voy.getDestination());
+			testlist.add(e);
+			
 		}
+		
 		
 		model.addAttribute("listeId",ids);
 		model.addAttribute("listeDest",idest);
+		model.addAttribute("listeiddest",testlist);
 		
 		// lier le voyage au mvc pour le formulaire
 		model.addAttribute("vRec", new Voyage());

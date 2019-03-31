@@ -22,7 +22,7 @@
 		<div class="form-group">
 			<label for="idV" class="col-sm-2 control-label">Id du Voyage</label>
 			<div class="col-sm-3">
-			<form:select path="idVoyage" cssClass="form-control" id="idV" items="${listevoyage}" itemLabel="placesLibres" itemValue="idVoyage"></form:select>
+			<form:select path="idVoyage" cssClass="form-control" id="idV" items="${listeiddest}" itemLabel="destination" itemValue="idVoyage"></form:select>
 
 			</div>
 		</div>
