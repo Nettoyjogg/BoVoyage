@@ -45,6 +45,7 @@
 <th>Prix </th>
 <th>Pays de destination</th>
 <th>places libres</th>
+<th>Photos</th>
 
 </tr>
 
@@ -53,6 +54,7 @@
 <td>${voyage.prix}</td>
 <td>${voyage.destination.pays}</td>
 <td>${voyage.placesLibres}</td>
+<td><img src="photoVoyage?idVoyage=${voyage.idVoyage}"/></td>
 </tr>
 
 
