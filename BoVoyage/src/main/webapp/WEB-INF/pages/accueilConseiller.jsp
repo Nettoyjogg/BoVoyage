@@ -21,24 +21,26 @@
 	
 	<h1 style="color:blue; text-align: center;">liste des voyages</h1>
 
-<table class="table table-striped">
-<tr>
-<th>Id</th>
-<th>places libres </th>
+<div class="col-md-10" style="margin-left: 100px">
+		<c:forEach items="${liste}" var="v">
 
-</tr>
-
-<c:forEach items="${liste}" var="v">
-<tr>
-<td>${v.idVoyage}</td>
-<td>${v.placesLibres}</td>
-</tr>
-
-</c:forEach>
-
-
-
-</table>
+			<div class="col-md-6" style="text-align: center">
+				<div style="color: grey; font: bold; font-size: 8pt">
+					<div style="color: grey; font: bold; font-size: 12pt">
+						<div style="color: black; font: bold; font-size: 15pt">
+							<div>
+								<img src="photoVoyage?idVoyage=${v.idVoyage}"
+									style="height: 250px; width: 350px" />
+							</div>
+							${v.destination.pays}
+						</div>
+						prix : ${v.prix}
+					</div>
+					offres restantes : ${v.placesLibres}
+				</div>
+			</div>
+		</c:forEach>
+	</div>
 	
 </body>
 </html>

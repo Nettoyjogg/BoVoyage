@@ -33,7 +33,7 @@
 								<img src="photoVoyage?idVoyage=${v.idVoyage}"
 									style="height: 250px; width: 350px" />
 							</div>
-							${v.destination.pays}
+							${v.destination.pays} 
 						</div>
 						prix : ${v.prix}
 					</div>
