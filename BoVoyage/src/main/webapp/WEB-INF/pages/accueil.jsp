@@ -37,7 +37,7 @@
 							</div>
 							${v.destination.pays} 
 						</div>
-						prix : ${v.prix}
+						prix : ${v.prix} euros
 					</div>
 					offres restantes : ${v.placesLibres}
 				</div>
