@@ -35,16 +35,12 @@
 				style="color: white; font-weight: bold; text-decoration: underline;">Nom:</label>
 			<form:input type="text" id="idNom" placeholder="Nom" path="nomClient" />
 			<br />
-			<br />
 
 			<label for="idPrenom"
 				style="color: white; font-weight: bold; text-decoration: underline;">Prénom:</label>
 			<form:input type="text" id="idPrenom" placeholder="Prénom"
 				path="prenomClient" />
 			<br />
-			<br />
-
-
 
 			<label
 				style="color: white; font-weight: bold; text-decoration: underline;">Civilite:</label>
@@ -53,7 +49,7 @@
 				<form:radiobutton path="civilite" value="M" />
 				Femme:
 				<form:radiobutton path="civilite" value="Mme" />
-				<br />
+
 			</div>
 
 			<label for="idAdresse"

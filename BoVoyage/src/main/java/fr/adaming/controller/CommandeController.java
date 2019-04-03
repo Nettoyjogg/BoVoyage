@@ -87,14 +87,24 @@ public class CommandeController {
 	
 		@RequestMapping(value = "/liste", method = RequestMethod.GET)
 		public ModelAndView afficherVoyage() {
-			return new ModelAndView("accueil", "liste", comService.recupererCommandes(client));
+			return new ModelAndView("panier", "liste", comService.recupererCommandes(client));
 		}
 		
 		//--------------------FONCTIONNALITE AJOUTER
 		@RequestMapping(value="/afficheAjouter",method=RequestMethod.GET)
 		public String afficheAjout(Model modele){
+			
+			Commande com=new Commande();
+			com.setPrestation(new PrestationHebergement());
+			
+			Formule forom=new Formule();
+			forom.setHotel(new Hotel());
+			forom.setVoiture(new Voiture());
+			com.setFormule(forom);
+			
+			
 			//lier une commande au modèle MVC afin de l'utiliser dans le formulaire
-			modele.addAttribute("comAjout",new Commande());
+			modele.addAttribute("comAjout",com);
 			
 			// ajout des formules proposées
 			List<Formule> formules = new ArrayList<Formule>();
@@ -125,10 +135,10 @@ public class CommandeController {
 			// ajout des hôtels proposées
 			List<Hotel> hotels = new ArrayList<Hotel>();
 
-			Hotel h1 = new Hotel("Hôtel mondial",2);
+			Hotel h1 = new Hotel("Hotel mondial",2);
 			hotels.add(h1);
 
-			Hotel h2 = new Hotel("Hôtel mondial",3);
+			Hotel h2 = new Hotel("Hotel mondial",3);
 			hotels.add(h2);
 			
 			modele.addAttribute("hotels",hotels);
@@ -150,11 +160,11 @@ public class CommandeController {
 			List<PrestationHebergement> prestations = new ArrayList<PrestationHebergement>();
 			
 			PrestationHebergement p1 = new PrestationHebergement();
-			p1.setType("Hébergement seul");
+			p1.setType("Hebergement seul");
 			prestations.add(p1);
 			
 			PrestationHebergement p2 = new PrestationHebergement();
-			p2.setType("Petit déjeuner");
+			p2.setType("Petit dejeuner");
 			prestations.add(p2);
 			
 			PrestationHebergement p3 = new PrestationHebergement();
@@ -162,7 +172,7 @@ public class CommandeController {
 			prestations.add(p3);
 			
 			PrestationHebergement p4 = new PrestationHebergement();
-			p4.setType("Pension complète");
+			p4.setType("Pension complete");
 			prestations.add(p4);
 			
 			modele.addAttribute("prestations",prestations);
