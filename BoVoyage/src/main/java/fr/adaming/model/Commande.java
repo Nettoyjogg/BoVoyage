@@ -49,19 +49,18 @@ public class Commande implements Serializable {
 	}
 
 	public Commande(int numeroCommande, String etat, String assurance, Formule formule,
-			PrestationHebergement prestation, Client client, Voyage voyage) {
+			PrestationHebergement prestation) {
 		super();
 		this.numeroCommande = numeroCommande;
 		this.etat = etat;
 		this.assurance = assurance;
 		this.formule = formule;
 		this.prestation = prestation;
-		this.client = client;
-		this.voyage = voyage;
+
 	}
 
 	public Commande(int idCommande, int numeroCommande, String etat, String assurance, Formule formule,
-			PrestationHebergement prestation, Client client, Voyage voyage) {
+			PrestationHebergement prestation) {
 		super();
 		this.idCommande = idCommande;
 		this.numeroCommande = numeroCommande;
@@ -69,8 +68,6 @@ public class Commande implements Serializable {
 		this.assurance = assurance;
 		this.formule = formule;
 		this.prestation = prestation;
-		this.client = client;
-		this.voyage = voyage;
 	}
 
 	// Déclaration des getters et setters

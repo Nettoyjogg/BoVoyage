@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
@@ -22,7 +24,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import fr.adaming.model.Client;
 import fr.adaming.model.Commande;
 import fr.adaming.model.Conseiller;
-import fr.adaming.model.Destination;
 import fr.adaming.model.Formule;
 import fr.adaming.model.Hotel;
 import fr.adaming.model.PrestationHebergement;
@@ -54,6 +55,8 @@ public class CommandeController {
 		private Conseiller conseiller;
 		
 		private Client client;
+		
+		
 		
 		
 		@InitBinder
