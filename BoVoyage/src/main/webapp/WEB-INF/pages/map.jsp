@@ -10,8 +10,8 @@
 <script type="text/javascript" src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
 <script type="text/javascript" src=https://unpkg.com/leaflet.markercluster@1.4.1/dist/></script>
       
-<link rel="stylesheet" href="assets/css/markerClusters.css" />
-<link rel="stylesheet" href="assets/css/markerClusters.Default.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/markerClusters.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/markerClusters.Default.css" />
 <style>
 #my_osm_widget_map { /* use the same name as <div id=""> */
 	width: 100%; /* important! if you need full width display */
@@ -33,7 +33,7 @@
 
 //Nous définissons le dossier qui contiendra les marqueurs
 var myIcon = L.icon({
-	iconUrl:'assets/images/boVoyageIcon.png',
+	iconUrl:'../assets/images/boVoyageIcon.png',
 	iconSize:[30, 30],
 	
 });
