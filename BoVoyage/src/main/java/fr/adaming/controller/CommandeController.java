@@ -11,6 +11,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -57,7 +59,16 @@ public class CommandeController {
 		private Client client;
 		
 		
-		
+		@PostConstruct
+		public void init(){
+			// récupérer le context de Spring Security
+			Authentication authCxt = SecurityContextHolder.getContext().getAuthentication();
+			
+			// récupérer le j_username de login.jsp (dans balise form de connexion) qui dans notre cas est le mail
+			String mail = authCxt.getName();
+			
+			this.client = cService.getFormateurByMail(mail);
+		}
 		
 		@InitBinder
 		public void initBinder(WebDataBinder binder){
