@@ -15,12 +15,13 @@
 </head>
 <body>
 
-	<form:form method="POST" action="soumettreAjouter" commandName="comAjout"
-		cssClass="form-horizontal">
+	<form:form method="POST" action="soumettreAjouter"
+		commandName="comAjout" cssClass="form-horizontal">
 
 
 		<div class="form-group">
-			<label for="idNum" class="col-sm-2 control-label">Numéro de la commande</label>
+			<label for="idNum" class="col-sm-2 control-label">Numéro de
+				la commande</label>
 			<div class="col-sm-3">
 				<form:input cssClass="form-control" id="idNum" placeholder="Num"
 					path="numeroCommande" />
@@ -28,9 +29,10 @@
 		</div>
 
 		<div class="form-group">
-			<label for="idEtat" class="col-sm-2 control-label">Etat de la commande</label>
+			<label for="idEtat" class="col-sm-2 control-label">Etat de la
+				commande</label>
 			<div class="col-sm-3">
-				<form:input cssClass="form-control" id="idEtat" placeholder="Etat" 
+				<form:input cssClass="form-control" id="idEtat" placeholder="Etat"
 					path="etat" />
 			</div>
 		</div>
@@ -38,8 +40,8 @@
 		<div class="form-group">
 			<label for="idAssurance" class="col-sm-2 control-label">Assurance</label>
 			<div class="col-sm-3">
-				<form:input cssClass="form-control" id="idAssurance" placeholder="Assurance"
-					 path="assurance" />
+				<form:input cssClass="form-control" id="idAssurance"
+					placeholder="Assurance" path="assurance" />
 			</div>
 		</div>
 
@@ -48,7 +50,15 @@
 			<label for="idFormule" class="col-sm-2 control-label">Formule</label>
 			<div class="col-sm-3">
 				<form:select cssClass="form-control" id="idFormule"
-					 path="formule.nomFormule" items="${formules}" itemLabel="nomFormule" />
+					path="formule.nomFormule" 
+					itemLabel="nomFormule" >
+					<c:forEach items="${formules}" var="f">
+
+						<option value="${f.nomFormule}">${f.nomFormule}</option>
+
+					</c:forEach>
+					
+					</form:select>
 			</div>
 		</div>
 
@@ -56,15 +66,28 @@
 			<label for="idHotel" class="col-sm-2 control-label">Hotels</label>
 			<div class="col-sm-3">
 				<form:select cssClass="form-control" id="idHotel"
-					path="formule.hotel" items="${hotels}" />
+					path="formule.hotel.nomH">
+					<c:forEach items="${hotels}" var="h">
+
+						<option value="${h.nomH}">${h.nomH}</option>
+
+					</c:forEach>
+					
+					</form:select>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<label for="idVoiture" class="col-sm-2 control-label">Voitures</label>
 			<div class="col-sm-3">
 				<form:select cssClass="form-control" id="idVoiture"
-					path="formule.voiture" items="${voitures}" />
+					path="formule.voiture.categorie">
+					<c:forEach items="${voitures}" var="v">
+
+						<option value="${v.categorie}">${v.categorie}</option>
+
+					</c:forEach>
+				</form:select>
 			</div>
 		</div>
 
@@ -72,14 +95,29 @@
 			<label for="idPrestation" class="col-sm-2 control-label">Prestation</label>
 			<div class="col-sm-3">
 				<form:select cssClass="form-control" id="idPrestation"
-					 path="prestation.type" items="${prestations}" itemLabel="type"/>
+					path="prestation.type">
+					<c:forEach items="${prestations}" var="p">
+
+						<option value="${p.type}">${p.type}</option>
+
+					</c:forEach>
+
+				</form:select>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label for="idduVoyage" class="col-sm-2 control-label">Voyage a commander</label>
+			<label for="idduVoyage" class="col-sm-2 control-label">Voyage
+				a commander</label>
 			<div class="col-sm-3">
-			<form:select path="voyage.idVoyage" cssClass="form-control" id="idduVoyage" items="${listeiddest}" itemLabel="destination" itemValue="idVoyage"></form:select>
+				<form:select path="voyage.idVoyage" cssClass="form-control"
+					id="idduVoyage">
+					<c:forEach items="${listeiddest}" var="dest">
+
+						<option value="${dest.idVoyage}">${dest.destination.pays}</option>
+
+					</c:forEach>
+				</form:select>
 
 			</div>
 		</div>
@@ -90,9 +128,9 @@
 				<button type="submit" class="btn btn-default">Ajouter</button>
 			</div>
 		</div>
-		
-		
-		
+
+
+
 	</form:form>
 
 </body>
