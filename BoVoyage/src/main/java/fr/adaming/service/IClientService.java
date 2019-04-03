@@ -19,4 +19,6 @@ public interface IClientService {
 	
 	public Client existe(Client c);
 	
+	public Client recupererClientParMail(String mail);
+	
 }
