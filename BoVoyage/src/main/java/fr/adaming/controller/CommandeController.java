@@ -67,7 +67,7 @@ public class CommandeController {
 			// récupérer le j_username de login.jsp (dans balise form de connexion) qui dans notre cas est le mail
 			String mail = authCxt.getName();
 			
-			this.client = cService.getFormateurByMail(mail);
+			this.client = cService.recupererClientParMail(mail);
 		}
 		
 		@InitBinder

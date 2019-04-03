@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Conseiller;
+import fr.adaming.model.Formateur;
 import fr.adaming.model.Role;
 
 
@@ -145,6 +146,28 @@ public class ClientDaoImpl implements IClientDao{
 		
 		return (Client) query.uniqueResult();
 	
+	}
+
+
+
+
+	@Override
+	public Client recupererClientParMail(String mail) {
+		//récupérer le bus (session de hibernate
+		Session s=sf.getCurrentSession();
+		
+		//requete HQL
+		String req="FROM Client as c WHERE c.mailClient=:pMail";
+		
+		//récupérer le query
+		Query query = s.createQuery(req);
+		
+		//passage des params
+		
+		query.setParameter("pMail", mail);
+		
+		return (Client) query.uniqueResult();
+		
 	}
 
 }

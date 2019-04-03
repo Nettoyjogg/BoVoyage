@@ -53,6 +53,11 @@ public class ClientServiceImpl implements IClientService{
 	public Client existe(Client c) {
 	return clientDao.existe(c);
 	}
+
+	@Override
+	public Client recupererClientParMail(String mail) {
+		return clientDao.recupererClientParMail(mail);
+	}
 		
 		
 	
