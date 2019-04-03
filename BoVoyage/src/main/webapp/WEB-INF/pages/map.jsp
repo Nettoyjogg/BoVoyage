@@ -39,17 +39,19 @@ var myIcon = L.icon({
 });
 var mymap = L.map('my_osm_widget_map', { /* use the same name as your <div id=""> */
 	  center: [44.8209,-0.6731], /* set GPS Coordinates */
-	  zoom: 05, /* define the zoom level */
+	  zoom: 02, /* define the zoom level */
 	  zoomControl: true, /* false = no zoom control buttons displayed */
 	  scrollWheelZoom: true /* false = scrolling zoom on the map is locked */
 	});
 
 
 var villes = {
-		"Paris": { "lat": 48.852969, "lon": 2.349903 },
-		"Brest": { "lat": 48.383, "lon": -4.500 },
-		"Quimper": { "lat": 48.000, "lon": -4.100 },
-		"Bayonne": { "lat": 43.500, "lon": -1.467 },
+		"Bresil": { "lat": -14.235004, "lon": -51.925280 },
+		"Sibérie": { "lat": 55.018803, "lon": 82.933952 },
+		"Japon": { "lat": 35.652832, "lon": 139.839478 },
+		"Croatie": { "lat": 45.815399, "lon": 15.966568 },
+		"Maroc": { "lat": 35.76727 , "lon": -5.79975 },
+		"Nouvelle-Zélande": { "lat": -41.28666552 , "lon": 174.772996908 },
 		
 };
 
@@ -57,8 +59,7 @@ var villes = {
 	  maxZoom: 10, /* zoom limit of the map */
 	  attribution: 'Données &copy; Contributeurs <a href="http://openstreetmap.org">OpenStreetMap</a> + ' +
 	    '<a href="http://mapbox.com">Mapbox</a> | ' +
-	    '<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY</a> ' +
-	    'Guillaume Rouan 2016', /* set the map's caption */
+	    '<a href="https://creativecommons.org/licenses/by/2.0/">CC-BY</a> ', /* set the map's caption */
 	    id: 'mapbox.streets' /* mapbox.light / dark / streets / outdoors / satellite */
 	}).addTo(mymap);
 	for (ville in villes) {
@@ -68,9 +69,6 @@ var villes = {
 		marker.bindPopup(ville);
 	}
 	
-	
-	
-
 	var markerBordeaux = L.marker([44.8209,-0.6731]).addTo(mymap); /* set your location's GPS Coordinates : [LAT,LON] */
 	
 </script>

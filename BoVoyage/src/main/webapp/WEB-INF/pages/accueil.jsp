@@ -19,18 +19,29 @@
 
 	<%@ include file="templates/navbar.html"%>
 
-	<h1 style="color: blue; text-align: center;">liste des voyages</h1>
+	<h1 style="color: black; text-align: center;">liste des voyages</h1>
 
 
-<div>
-	<c:forEach items="${liste}" var="v">
-			${v.prix}
-			${v.destination.pays}
-			${v.placesLibres}
-		<img src="photoVoyage?idVoyage=${v.idVoyage}" />
+	<div class="col-md-10" style="margin-left: 100px">
+		<c:forEach items="${liste}" var="v">
 
-	</c:forEach>
-</div>
+			<div class="col-md-6" style="text-align: center">
+				<div style="color: grey; font: bold; font-size: 8pt">
+					<div style="color: grey; font: bold; font-size: 12pt">
+						<div style="color: black; font: bold; font-size: 15pt">
+							<div>
+								<img src="photoVoyage?idVoyage=${v.idVoyage}"
+									style="height: 250px; width: 350px" />
+							</div>
+							${v.destination.pays}
+						</div>
+						prix : ${v.prix}
+					</div>
+					offres restantes : ${v.placesLibres}
+				</div>
+			</div>
+		</c:forEach>
+	</div>
 
 
 </body>
