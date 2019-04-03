@@ -9,11 +9,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>accueil</title>
 
 <!-- ajouter le fichier bootstrap -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
+	
 </head>
 <body>
 
