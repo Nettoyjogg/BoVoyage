@@ -22,10 +22,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import fr.adaming.model.Client;
 import fr.adaming.model.Commande;
 import fr.adaming.model.Conseiller;
+import fr.adaming.model.Destination;
 import fr.adaming.model.Formule;
 import fr.adaming.model.Hotel;
 import fr.adaming.model.PrestationHebergement;
 import fr.adaming.model.Voiture;
+import fr.adaming.model.Voyage;
 import fr.adaming.service.IClientService;
 import fr.adaming.service.ICommandeService;
 import fr.adaming.service.IConseillerService;
@@ -151,6 +153,26 @@ public class CommandeController {
 			
 			modele.addAttribute("prestations",prestations);
 			
+			
+			//ça sert pour créer une liste des voyages
+			List<Voyage> voyages = vService.afficherVoyages();
+			
+			modele.addAttribute("listevoyage", voyages);
+			
+
+			List<Voyage> testlist = new ArrayList<Voyage>();
+			
+			for (Voyage voy : voyages) {
+
+
+				Voyage e = new Voyage();
+				e.setIdVoyage(voy.getIdVoyage());
+				e.setDestination(voy.getDestination());
+				testlist.add(e);
+				
+			}
+			
+			modele.addAttribute("listeiddest",testlist);
 			
 			return "ajout_commande";
 		}
