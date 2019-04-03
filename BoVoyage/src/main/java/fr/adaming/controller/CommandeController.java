@@ -87,7 +87,7 @@ public class CommandeController {
 	
 		@RequestMapping(value = "/liste", method = RequestMethod.GET)
 		public ModelAndView afficherVoyage() {
-			return new ModelAndView("accueil", "liste", comService.recupererCommandes(client));
+			return new ModelAndView("panier", "liste", comService.recupererCommandes(client));
 		}
 		
 		//--------------------FONCTIONNALITE AJOUTER
