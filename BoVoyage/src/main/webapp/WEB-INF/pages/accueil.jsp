@@ -16,34 +16,22 @@
 	href="${pageContext.request.contextPath}/assets/css/bootstrap.css" />
 </head>
 <body>
-	
-<%@ include file="templates/navbar.html" %>	
-	
-	<h1 style="color:blue; text-align: center;">liste des voyages</h1>
 
-<table class="table table-striped">
-<tr>
+	<%@ include file="templates/navbar.html"%>
 
-<th>Prix </th>
-<th>Pays de destination</th>
-<th>Places libres</th>
-<th>Photo</th>
-
-</tr>
-
-<c:forEach items="${liste}" var="v">
-<tr>
-<td>${v.prix}</td>
-<td>${v.destination.pays}</td>
-<td>${v.placesLibres}</td>
-<td><img src="photoVoyage?idVoyage=${v.idVoyage}"/></td>
-</tr>
-
-</c:forEach>
+	<h1 style="color: blue; text-align: center;">liste des voyages</h1>
 
 
+<div>
+	<c:forEach items="${liste}" var="v">
+			${v.prix}
+			${v.destination.pays}
+			${v.placesLibres}
+		<img src="photoVoyage?idVoyage=${v.idVoyage}" />
 
-</table>
-	
+	</c:forEach>
+</div>
+
+
 </body>
 </html>
