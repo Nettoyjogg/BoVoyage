@@ -25,6 +25,7 @@ import fr.adaming.model.Conseiller;
 import fr.adaming.model.Formule;
 import fr.adaming.model.Hotel;
 import fr.adaming.model.PrestationHebergement;
+import fr.adaming.model.Voiture;
 import fr.adaming.service.IClientService;
 import fr.adaming.service.ICommandeService;
 import fr.adaming.service.IConseillerService;
@@ -128,7 +129,7 @@ public class CommandeController {
 			modele.addAttribute("formules", formules);
 			
 			
-			// ajout des prestations proposées
+			// ajout des hôtels proposées
 			List<Hotel> hotels = new ArrayList<Hotel>();
 
 			Hotel h1 = new Hotel("Hôtel mondial",2);
@@ -138,6 +139,18 @@ public class CommandeController {
 			hotels.add(h2);
 			
 			modele.addAttribute("hotels",hotels);
+			
+			
+			// ajout des voitures proposées
+			List<Voiture> voitures = new ArrayList<Voiture>();
+
+			Voiture v1 = new Voiture("A","Hertz",2);
+			voitures.add(v1);
+
+			Voiture v2 = new Voiture("C","Hertz",5);
+			voitures.add(v2);
+						
+			modele.addAttribute("voitures",voitures);
 			
 			
 			// ajout des prestations proposées

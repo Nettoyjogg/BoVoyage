@@ -15,7 +15,7 @@
 </head>
 <body>
 
-	<form:form method="POST" action="modifierFormule" commandName="comModif"
+	<form:form method="POST" action="soumettreModifier" commandName="comModif"
 		cssClass="form-horizontal">
 		<div class="form-group">
 			<label for="idID" class="col-sm-2 control-label">ID</label>
@@ -63,6 +63,14 @@
 			<div class="col-sm-3">
 				<form:select cssClass="form-control" id="idHotel"
 					path="formule.hotel" items="${hotels}" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="idVoiture" class="col-sm-2 control-label">Voitures</label>
+			<div class="col-sm-3">
+				<form:select cssClass="form-control" id="idVoiture"
+					path="formule.voiture" items="${voitures}" />
 			</div>
 		</div>
 

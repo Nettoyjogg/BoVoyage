@@ -57,7 +57,7 @@ public class CommandeDaoImpl implements ICommandeDao {
 		// récupérer le bus (session de hibernate
 		Session s = sf.getCurrentSession();
 
-		String req = "UPDATE Commande as com SET com.numeroCommande=:pNum, com.etat=:pEtat, com.assurance=:pAssurance com.formule=:pForm, v.prestation=:pPrest WHERE com.idCommande=:pId";
+		String req = "UPDATE Commande as com SET com.numeroCommande=:pNum, com.etat=:pEtat, com.assurance=:pAssurance, com.formule=:pForm, com.prestation=:pPrest WHERE com.idCommande=:pId";
 
 		Query queryHQL = s.createQuery(req);
 
