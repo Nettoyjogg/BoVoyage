@@ -37,7 +37,7 @@
 			<label for="idEtat" class="col-sm-2 control-label">Etat de la commande</label>
 			<div class="col-sm-3">
 				<form:input cssClass="form-control" id="idEtat" placeholder="Etat" 
-					path="Etat" />
+					path="etat" />
 			</div>
 		</div>
 
@@ -48,7 +48,6 @@
 					 path="assurance" />
 			</div>
 		</div>
-
 
 		<div class="form-group">
 			<label for="idFormule" class="col-sm-2 control-label">Formule</label>
@@ -81,6 +80,7 @@
 					 path="prestation" items="${prestations}" itemLabel="type"/>
 			</div>
 		</div>
+		
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
