@@ -195,6 +195,7 @@ public class CommandeController {
 		public String soumettreAjout(@ModelAttribute("comAjout") Commande comIn,RedirectAttributes ra){
 		 // appel de la methode service
 			Commande comOut = comService.ajouterCommande(comIn);
+			comOut.setClient(client);
 			if(comOut.getIdCommande()!=0){
 				return "redirect:liste";
 			}else{
